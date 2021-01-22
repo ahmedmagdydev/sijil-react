@@ -1,0 +1,14 @@
+body,
+html,
+#root {
+  height: 100%;
+}
+.highcharts-credits {
+  display: none;
+}
+.rounded-2xl {
+  border-radius: 15px;
+}
+.box-shadow {
+  box-shadow: 0 0 11px 0px #e2e2e2;
+}

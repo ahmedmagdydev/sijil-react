@@ -1,0 +1,13 @@
+.navigation a {
+  height: 30px;
+  border-radius: 9px;
+  padding: 3px 30px;
+  margin-top: 15px;
+  color: #9dc1e5;
+}
+
+.navigation a:hover,
+.navigation a.active {
+  background-color: #274d72;
+  text-decoration: none;
+}

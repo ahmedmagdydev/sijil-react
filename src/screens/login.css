@@ -1,0 +1,85 @@
+.login-wrapper {
+  background: rgb(233, 237, 248);
+  background: linear-gradient(
+    180deg,
+    rgba(233, 237, 248, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.logo-large {
+  width: 250px;
+}
+.sign-in-form {
+  max-width: 350px;
+}
+.form-control {
+  border-radius: 15px;
+  padding: 23px;
+}
+.submit {
+  border-radius: 30px;
+  background-color: #00b2e2;
+  border: none;
+}
+.introduction {
+  background: #fbfcff;
+}
+.services {
+  background: rgb(10, 64, 101);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 64, 101, 1) 0%,
+    rgba(9, 21, 63, 1) 100%
+  );
+}
+.services h2 {
+  color: #fff;
+}
+.services h2:after {
+  content: "";
+  width: 80px;
+  height: 7px;
+  background-color: #00b2e2;
+  display: block;
+  border-radius: 9px;
+  margin-top: 23px;
+}
+.video {
+  text-align: center;
+}
+footer {
+  background: rgb(232, 236, 248);
+  background: linear-gradient(
+    180deg,
+    rgba(232, 236, 248, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.step {
+  height: 400px;
+  background: rgb(0, 176, 226);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 176, 226, 1) 0%,
+    rgba(0, 144, 226, 1) 100%
+  );
+  border-radius: 15px;
+  padding-top: 100px;
+  color: #fff;
+}
+.step.step-2 {
+  background: rgb(57, 137, 196);
+  background: linear-gradient(
+    180deg,
+    rgba(57, 137, 196, 1) 0%,
+    rgba(17, 96, 155, 1) 100%
+  );
+}
+.step.step-3 {
+  background: rgb(9, 62, 99);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 62, 99, 1) 0%,
+    rgba(9, 20, 62, 1) 100%
+  );
+}
