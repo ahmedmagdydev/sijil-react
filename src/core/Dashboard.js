@@ -1,7 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import DashboardSidebar from "./DashboardSidebar";
-import "../core/dashboard.css";
 function Dashboard({ children }) {
   return (
     <div style={styles.container}>

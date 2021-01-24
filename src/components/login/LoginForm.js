@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 // import ReCAPTCHA from "react-google-recaptcha";
-import { Modal } from "bootstrap";
+import OTP from "./OTP";
+import ResetPassword from "./ResetPassword";
 
 function LoginForm({ onViewChange }) {
   const createAccount = () => {
     onViewChange("createAccount");
   };
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showOTP, setShowOTP] = useState(false);
+  const [showResetPassword, ShowResetPassword] = useState(false);
+  const handleCloseOTP = () => setShowOTP(false);
+  const handleShowOTP = () => setShowOTP(true);
+  const handleCloseResetPassword = () => ShowResetPassword(false);
+  const handleShoweResetPassword = () => ShowResetPassword(true);
   return (
     <div className="mr-auto sign-in-form">
       <h1 className="text-capitalize mb-4">
@@ -32,15 +35,17 @@ function LoginForm({ onViewChange }) {
           variant="primary"
           size="lg"
           block="true"
-          type="submit"
-          onClick={handleShow}
+          type="button"
+          onClick={handleShowOTP}
         >
           Submit
         </Button>
       </Form>
       <div className="py-4">
         <div>
-          <Button variant="link">Forget Password/Username or usermail</Button>
+          <Button variant="link" onClick={handleShoweResetPassword}>
+            Forget Password/Username or usermail
+          </Button>
         </div>
         <div>
           <Button variant="link" onClick={createAccount}>
@@ -48,20 +53,11 @@ function LoginForm({ onViewChange }) {
           </Button>
         </div>
       </div>
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>please enter OTP to sing in to your account</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
+      <OTP show={showOTP} handleClose={handleCloseOTP} />
+      <ResetPassword
+        show={showResetPassword}
+        handleClose={handleCloseResetPassword}
+      />
     </div>
   );
 }
