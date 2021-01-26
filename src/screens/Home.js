@@ -7,7 +7,8 @@ import { _rows, _columns } from "../components/home/ServiceStatusesData";
 import { Container, Button } from "react-bootstrap";
 import ServiceStatuses from "../components/home/ServiceStatuses";
 import Requests from "../components/home/Requests";
-
+import { useTranslation } from "react-i18next";
+import NumberOfClients from "../components/home/NumberOfClients";
 function Home() {
   const changeData = (rate, interval) => {
     const _data = data[rate];
@@ -17,12 +18,13 @@ function Home() {
     data: data["yearly"],
     interval: 1000 * 3600 * 24 * 30,
   });
+  const { t } = useTranslation();
   return (
-    <Container className="">
+    <Container>
       <div className="p-4">
         <div className="row">
           <div className="col-md-7">
-            <Box title="Lessor Acceptance Rate">
+            <Box title={t("LessorAcceptanceRate")}>
               <Chart data={lessorRate.data} interval={lessorRate.interval} />
               <div className="d-flex justify-content-between px-4">
                 <Button className="flex-grow-1 mr-1" variant="outline-primary">
@@ -66,13 +68,7 @@ function Home() {
               <ServiceStatuses />
             </Box>
             <Box title="Number Of Clients">
-              <div className="px-4 d-flex align-items-center justify-content-between">
-                <div>
-                  <i className="fa fa-user"></i>
-                </div>
-                <h3>1,234</h3>
-                <div className="chart">chart</div>
-              </div>
+              <NumberOfClients />
             </Box>
           </div>
         </div>

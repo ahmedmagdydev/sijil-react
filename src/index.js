@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
+import "./i18n";
 import "./index.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from "./screens/Home";
@@ -9,18 +10,27 @@ import Dashboard from "./core/Dashboard";
 
 document.getElementById("root")
   ? ReactDOM.render(
-      <Dashboard>
-        <Home />
-      </Dashboard>,
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Dashboard">
+          <Home />
+        </Dashboard>
+      </Suspense>,
       document.getElementById("root")
     )
   : document.getElementById("profile")
   ? ReactDOM.render(
-      <Dashboard>
-        <Profile />
-      </Dashboard>,
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Profile">
+          <Profile />
+        </Dashboard>
+      </Suspense>,
       document.getElementById("profile")
     )
   : document.getElementById("login")
-  ? ReactDOM.render(<Login />, document.getElementById("login"))
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Login />
+      </Suspense>,
+      document.getElementById("login")
+    )
   : null;

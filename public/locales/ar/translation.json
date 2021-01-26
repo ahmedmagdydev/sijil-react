@@ -1,0 +1,15 @@
+{
+  "home": "الرئيسية",
+  "profile": "الملف الشخصى",
+  "LessorAcceptanceRate": "معدل قبول المؤجر",
+  "UserEmail": "البريد الإلكترونى",
+  "Username": "إسم المستخدم",
+  "Password": "كلمة المرور",
+  "Change Password": "تغيير كلمة المرور",
+  "SignOut": "تسجيل الخروج",
+  "Notifications": "إشعارات",
+  "profileScreen": {
+    "AccountInformation": "معلومات الحساب",
+    "History": "السجل"
+  }
+}

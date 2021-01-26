@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 const NavigationStyle = styled.ul`
   a {
     height: 30px;
@@ -34,40 +35,30 @@ const NavigationStyle = styled.ul`
   }
 `;
 function Navigation() {
+  const { t } = useTranslation();
+
   return (
     <NavigationStyle className="list-unstyled mt-4 navigation">
-      {navigationList.map((item) => {
-        return (
-          <li key={item.title}>
-            <a
-              href={item.url}
-              className={`d-block ${item.active ? "active" : ""}`}
-            >
-              <i className={"fa fa-" + item.icon}></i>
-              {item.title}
-            </a>
-          </li>
-        );
-      })}
+      <li>
+        <a href="home" className={`d-block active`}>
+          <i className={"fa fa-home"}></i>
+          {t("home")}
+        </a>
+      </li>
+      <li>
+        <a href="profile" className={`d-block `}>
+          <i className={"fa fa-user"}></i>
+          {t("profile")}
+        </a>
+      </li>
+      <li>
+        <a href="search" className={`d-block `}>
+          <i className={"fa fa-search"}></i>
+          {t("search")}
+        </a>
+      </li>
     </NavigationStyle>
   );
 }
-const navigationList = [
-  {
-    title: "home",
-    url: "home",
-    icon: "home",
-    active: true,
-  },
-  {
-    title: "profile",
-    url: "profile",
-    icon: "user",
-  },
-  {
-    title: "search",
-    url: "search",
-    icon: "search",
-  },
-];
+
 export default Navigation;

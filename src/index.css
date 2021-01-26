@@ -6,11 +6,15 @@ html,
 html {
   font-size: 14px;
 }
+html body {
+  color: #194772;
+  background-color: #e9ebf6;
+}
 .highcharts-credits {
   display: none;
 }
 .rounded-2xl {
-  border-radius: 15px;
+  border-radius: 15px !important;
 }
 .box-shadow {
   box-shadow: 0 0 11px 0px #e2e2e2;

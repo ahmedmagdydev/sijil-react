@@ -1,0 +1,15 @@
+{
+  "home": "Home",
+  "profile": "Profile",
+  "LessorAcceptanceRate": "Lessor Acceptance Rate",
+  "UserEmail": "User Email",
+  "Username": "Username",
+  "Password": "Password",
+  "Change Password": "Change Password",
+  "SignOut": "Sign Out",
+  "Notifications": "Notifications",
+  "profileScreen": {
+    "AccountInformation": "Account Information",
+    "History": "History"
+  }
+}
