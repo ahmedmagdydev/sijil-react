@@ -7,9 +7,28 @@
   "Password": "كلمة المرور",
   "Change Password": "تغيير كلمة المرور",
   "SignOut": "تسجيل الخروج",
+  "search": "بحث",
   "Notifications": "إشعارات",
   "profileScreen": {
     "AccountInformation": "معلومات الحساب",
     "History": "السجل"
+  },
+  "SearchScreen": {
+    "RequestDate": "تاريخ الطلب",
+    "CRN": "CRN",
+    "ARN": "ARN",
+    "ContractNumber": "رقم العقد",
+    "ContractType": "نوع العقد",
+    "AnyUniqueID": "أي رقم مميز",
+    "UniqueIdType": "نوع الرقم المميز",
+    "FileName": "اسم الملف",
+    "City": "المدينة",
+    "LesseeNationalID": "رقم هوية المؤمن عليه",
+    "DateRanges": "نطاق التواريخ",
+    "Status": "الحالة",
+    "ContractOpenDate": "تاريخ بداية العقد",
+    "ApprovalDate": "تاريخ الموافقة",
+    "ModifiedOn": "تاريخ التعديل",
+    "PaymentStatus": "حالة الدفع"
   }
 }

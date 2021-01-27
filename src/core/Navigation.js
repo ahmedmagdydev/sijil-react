@@ -34,25 +34,28 @@ const NavigationStyle = styled.ul`
     border-radius: 9px;
   }
 `;
+const activeLink = (url) => {
+  return document.location.href.indexOf(url) >= 0 ? "active" : "";
+};
 function Navigation() {
   const { t } = useTranslation();
 
   return (
     <NavigationStyle className="list-unstyled mt-4 navigation">
       <li>
-        <a href="home" className={`d-block active`}>
+        <a href="home" className={`d-block ${activeLink("home")}`}>
           <i className={"fa fa-home"}></i>
           {t("home")}
         </a>
       </li>
       <li>
-        <a href="profile" className={`d-block `}>
+        <a href="profile" className={`d-block ${activeLink("profile")}`}>
           <i className={"fa fa-user"}></i>
           {t("profile")}
         </a>
       </li>
       <li>
-        <a href="search" className={`d-block `}>
+        <a href="search" className={`d-block ${activeLink("search")}`}>
           <i className={"fa fa-search"}></i>
           {t("search")}
         </a>

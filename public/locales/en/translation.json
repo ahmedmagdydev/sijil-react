@@ -5,11 +5,30 @@
   "UserEmail": "User Email",
   "Username": "Username",
   "Password": "Password",
+  "search": "Search",
   "Change Password": "Change Password",
   "SignOut": "Sign Out",
   "Notifications": "Notifications",
   "profileScreen": {
     "AccountInformation": "Account Information",
     "History": "History"
+  },
+  "SearchScreen": {
+    "RequestDate": "Request Date",
+    "CRN": "CRN",
+    "ARN": "ARN",
+    "ContractNumber": "Contract Number",
+    "ContractType": "Contract Type",
+    "AnyUniqueID": "Any Unique ID",
+    "UniqueIdType": "Unique ID Type",
+    "FileName": "File Name",
+    "City": "City",
+    "LesseeNationalID": "Lessee Nationa lID",
+    "DateRanges": "Date Ranges",
+    "Status": "Status",
+    "ContractOpenDate": "Contract Open Date",
+    "ApprovalDate": "Approval Date",
+    "ModifiedOn": "Modified On",
+    "PaymentStatus": "Payment Status"
   }
 }

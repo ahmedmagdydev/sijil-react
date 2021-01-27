@@ -7,6 +7,7 @@ import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import Login from "./screens/Login";
 import Dashboard from "./core/Dashboard";
+import Search from "./screens/Search";
 
 document.getElementById("root")
   ? ReactDOM.render(
@@ -32,5 +33,14 @@ document.getElementById("root")
         <Login />
       </Suspense>,
       document.getElementById("login")
+    )
+  : document.getElementById("search")
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Search">
+          <Search />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById("search")
     )
   : null;
