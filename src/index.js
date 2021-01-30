@@ -8,6 +8,9 @@ import Profile from "./screens/Profile";
 import Login from "./screens/Login";
 import Dashboard from "./core/Dashboard";
 import Search from "./screens/Search";
+import Documentation from "./screens/Documentation";
+import Invoices from "./screens/Invoices";
+import AnalyticalReports from "./screens/AnalyticalReports";
 
 document.getElementById("root")
   ? ReactDOM.render(
@@ -43,4 +46,32 @@ document.getElementById("root")
       </Suspense>,
       document.getElementById("search")
     )
+  : document.getElementById("documentation")
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Documentation">
+          <Documentation />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById("documentation")
+    )
+  : document.getElementById("invoices")
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Invoices">
+          <Invoices />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById("invoices")
+    )
+  : document.getElementById("analyticalReports")
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="AnalyticalReports">
+          <AnalyticalReports />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById("analyticalReports")
+    )
   : null;
+AnalyticalReports;

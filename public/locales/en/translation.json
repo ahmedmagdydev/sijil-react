@@ -9,6 +9,15 @@
   "Change Password": "Change Password",
   "SignOut": "Sign Out",
   "Notifications": "Notifications",
+  "AnalyticalReports": "Analytical Reports",
+  "dashboard": "Dashboard",
+  "services": "Services",
+  "responses": "Responses",
+  "invoices": "Invoices",
+  "documentation": "Documentation",
+  "users": "Users",
+  "First": "First",
+  "Last": "Last",
   "profileScreen": {
     "AccountInformation": "Account Information",
     "History": "History"
@@ -30,5 +39,10 @@
     "ApprovalDate": "Approval Date",
     "ModifiedOn": "Modified On",
     "PaymentStatus": "Payment Status"
+  },
+  "Request": {
+    "ReportName": "Report Name",
+    "FromDate": "From Date",
+    "ToDate": "To Date"
   }
 }

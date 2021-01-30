@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
 import Box from "../components/framework/Box";
-
+import { useCookies } from "react-cookie";
 const HeaderStyle = styled.div`
   color: #1e4b5e;
   button {
@@ -19,11 +19,15 @@ const HeaderStyle = styled.div`
   }
 `;
 function Dashboard({ title, children }) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [cookies, setCookie, removeCookie] = useCookies(["i18next"]);
 
   const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
+    i18n.changeLanguage(language).then(() => {
+      setCookie("i18next", language);
+    });
   };
+  const getLang = () => i18n.language || window.localStorage.i18nLng;
   useEffect(() => {
     if (!localStorage.getItem("i18nextLng")) {
       localStorage.setItem("i18nextLng", "ar");
@@ -31,13 +35,26 @@ function Dashboard({ title, children }) {
     changeLanguage(localStorage.getItem("i18nextLng"));
   }, []);
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        ...styles.container,
+        direction: getLang() === "ar" ? "rtl" : "ltr",
+      }}
+      dir={getLang() === "ar" ? "rtl" : "ltr"}
+    >
       <DashboardSidebar />
-      <div style={styles.content} className="flex-grow-1">
+      <div
+        style={getLang() === "ar" ? styles.contentAr : styles.contentEn}
+        className="flex-grow-1"
+      >
         <Container>
           <HeaderStyle className="px-4 pt-4 pb-2 d-flex">
-            <h2>{title}</h2>
-            <div className="ml-auto d-flex">
+            <h2>{t(title)}</h2>
+            <div
+              className={
+                (getLang() === "ar" ? "mr-auto" : "ml-auto") + " d-flex"
+              }
+            >
               <Box className="mr-2">
                 <i className="fa fa-bell"></i>
               </Box>
@@ -67,8 +84,11 @@ const styles = {
     display: "flex",
     backgroundColor: "#f5f5fd",
   },
-  content: {
+  contentEn: {
     paddingLeft: 220,
+  },
+  contentAr: {
+    paddingRight: 220,
   },
 };
 export default hot(module)(Dashboard);

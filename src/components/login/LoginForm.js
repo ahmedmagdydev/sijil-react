@@ -3,8 +3,11 @@ import { Form, Button } from "react-bootstrap";
 // import ReCAPTCHA from "react-google-recaptcha";
 import OTP from "./OTP";
 import ResetPassword from "./ResetPassword";
+import { useTranslation } from "react-i18next";
 
 function LoginForm({ onViewChange }) {
+  const { t, i18n } = useTranslation();
+
   const createAccount = () => {
     onViewChange("createAccount");
   };
@@ -14,8 +17,12 @@ function LoginForm({ onViewChange }) {
   const handleShowOTP = () => setShowOTP(true);
   const handleCloseResetPassword = () => ShowResetPassword(false);
   const handleShoweResetPassword = () => ShowResetPassword(true);
+  const getLang = () => i18n.language || window.localStorage.i18nLng;
+
   return (
-    <div className="mr-auto sign-in-form">
+    <div
+      className={(getLang() == "ar" ? "ml-auto" : "mr-auto") + " sign-in-form"}
+    >
       <h1 className="text-capitalize mb-4">
         please <span style={{ color: "#00b2e2" }}>sign in</span> to your account
       </h1>

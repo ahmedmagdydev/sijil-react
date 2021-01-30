@@ -125,10 +125,7 @@ function Requests() {
     },
     useSortBy
   );
-  const handleAction = (row, i) => {
-    console.log(`🚀 ~ file: Requests.js ~ line 74 ~ row`, row);
-    console.log(`🚀 ~ file: Requests.js ~ line 77 ~ i`, i);
-  };
+  const handleAction = (row, i) => {};
   return (
     <TableStyle>
       <BTable striped bordered responsive hover size="sm" {...getTableProps()}>
