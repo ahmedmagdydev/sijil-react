@@ -9,6 +9,15 @@
   "SignOut": "تسجيل الخروج",
   "search": "بحث",
   "Notifications": "إشعارات",
+  "AnalyticalReports": "التقارير التحليلية",
+  "dashboard": "لوحة القيادة",
+  "services": "خدمات",
+  "responses": "استجابات",
+  "invoices": "الفواتير",
+  "documentation": "توثيق",
+  "users": "المستخدمون",
+  "First": "الأول",
+  "Last": "الأخير",
   "profileScreen": {
     "AccountInformation": "معلومات الحساب",
     "History": "السجل"
@@ -30,5 +39,10 @@
     "ApprovalDate": "تاريخ الموافقة",
     "ModifiedOn": "تاريخ التعديل",
     "PaymentStatus": "حالة الدفع"
+  },
+  "Request": {
+    "ReportName": "إسم التقرير",
+    "FromDate": "من تاريخ",
+    "ToDate": "إلى تاريخ"
   }
 }
