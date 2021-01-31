@@ -15,7 +15,7 @@ import AnalyticalReports from "./screens/AnalyticalReports";
 document.getElementById("root")
   ? ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>
-        <Dashboard title="Dashboard">
+        <Dashboard title="dashboard">
           <Home />
         </Dashboard>
       </Suspense>,
@@ -24,7 +24,7 @@ document.getElementById("root")
   : document.getElementById("profile")
   ? ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>
-        <Dashboard title="Profile">
+        <Dashboard title="profile">
           <Profile />
         </Dashboard>
       </Suspense>,
@@ -40,7 +40,7 @@ document.getElementById("root")
   : document.getElementById("search")
   ? ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>
-        <Dashboard title="Search">
+        <Dashboard title="search">
           <Search />
         </Dashboard>
       </Suspense>,

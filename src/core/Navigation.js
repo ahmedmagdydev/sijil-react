@@ -97,7 +97,7 @@ function Navigation() {
       </li>
       <li>
         <a
-          href="analytical-reports"
+          href="analyticalreports"
           className={`d-block ${activeLink("analytical-reports")}`}
         >
           <i className={"fa fa-pie-chart"}></i>

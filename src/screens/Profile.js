@@ -13,9 +13,6 @@ const VerticalLine = styled.div`
   background-color: #d0d8e5;
   margin: auto;
 `;
-const Notifications = styled.div`
-  background-color: #e9ebf6;
-`;
 
 function Profile() {
   const { t } = useTranslation();
@@ -51,7 +48,7 @@ function Profile() {
             </Row>
           </div>
         </Container>
-        <Notifications className="p-4 pt-5">
+        <div className="p-4 pt-5" style={{ backgroundColor: "#e9ebf6" }}>
           <Container>
             <h4 className="text-uppercase">{t("Notifications")}</h4>
             <hr />
@@ -71,7 +68,7 @@ function Profile() {
               date="10 may 2020 at 23:00 am"
             ></Notification>
           </Container>
-        </Notifications>
+        </div>
       </>
     );
   }

@@ -22,18 +22,18 @@ function Dashboard({ title, children }) {
   const { t, i18n } = useTranslation();
   const [cookies, setCookie, removeCookie] = useCookies(["i18next"]);
 
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language).then(() => {
-      setCookie("i18next", language);
-    });
-  };
-  const getLang = () => i18n.language || window.localStorage.i18nLng;
   useEffect(() => {
     if (!localStorage.getItem("i18nextLng")) {
       localStorage.setItem("i18nextLng", "ar");
     }
     changeLanguage(localStorage.getItem("i18nextLng"));
   }, []);
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language).then(() => {
+      setCookie("i18next", language);
+    });
+  };
+  const getLang = () => i18n.language || window.localStorage.i18nLng;
   return (
     <div
       style={{
