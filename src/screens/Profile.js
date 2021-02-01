@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { hot } from "react-hot-loader";
-import { Container, Form, Col, Row, Button } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Notification from "../components/framework/Notification";

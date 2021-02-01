@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import BTable from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
 
 import { useTable, usePagination, useSortBy } from "react-table";
 import styled from "styled-components";
-import { Button, Dropdown } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import SearchFilter from "./SearchFilter";
 import Pagination from "../framework/Pagination";

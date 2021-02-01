@@ -98,7 +98,7 @@ function Navigation() {
       <li>
         <a
           href="analyticalreports"
-          className={`d-block ${activeLink("analytical-reports")}`}
+          className={`d-block ${activeLink("analyticalreports")}`}
         >
           <i className={"fa fa-pie-chart"}></i>
           {t("AnalyticalReports")}

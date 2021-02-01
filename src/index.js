@@ -3,15 +3,25 @@ import ReactDOM from "react-dom";
 import "./i18n";
 import "./index.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Home from "./screens/Home";
-import Profile from "./screens/Profile";
-import Login from "./screens/Login";
-import Dashboard from "./core/Dashboard";
-import Search from "./screens/Search";
-import Documentation from "./screens/Documentation";
-import Invoices from "./screens/Invoices";
-import AnalyticalReports from "./screens/AnalyticalReports";
+// import Home from "./screens/Home";
+const Home = React.lazy(() => import("./screens/Home"));
+// import Profile from "./screens/Profile";
 
+const Profile = React.lazy(() => import("./screens/Profile"));
+// import Login from "./screens/Login";
+const Login = React.lazy(() => import("./screens/Login"));
+// import Dashboard from "./core/Dashboard";
+const Dashboard = React.lazy(() => import("./core/Dashboard"));
+// import Search from "./screens/Search";
+const Search = React.lazy(() => import("./screens/Search"));
+// import Documentation from "./screens/Documentation";
+const Documentation = React.lazy(() => import("./screens/Documentation"));
+// import Invoices from "./screens/Invoices";
+const Invoices = React.lazy(() => import("./screens/Invoices"));
+// import AnalyticalReports from "./screens/AnalyticalReports";
+const AnalyticalReports = React.lazy(() =>
+  import("./screens/AnalyticalReports")
+);
 document.getElementById("root")
   ? ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>

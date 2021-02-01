@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 // import ReCAPTCHA from "react-google-recaptcha";
 import OTP from "./OTP";
 import ResetPassword from "./ResetPassword";

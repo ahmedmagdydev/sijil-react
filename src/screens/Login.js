@@ -4,7 +4,7 @@ import LoginForm from "../components/login/LoginForm";
 import "./login.css";
 import Footer from "../components/login/Footer";
 import { hot } from "react-hot-loader";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import Introduction from "../components/login/Introduction";
 import Services from "../components/login/Services";
 import CreateAccount from "../components/login/CreateAccount";

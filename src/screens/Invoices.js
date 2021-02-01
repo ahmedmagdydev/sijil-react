@@ -5,7 +5,7 @@ import { useTable, usePagination, useSortBy } from "react-table";
 import Pagination from "../components/framework/Pagination";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 const TableStyle = styled.div`
   table {

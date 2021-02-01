@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Table, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Table from "react-bootstrap/Table";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 const Styles = styled.div`
   thead tr td {
     border-top: 0;

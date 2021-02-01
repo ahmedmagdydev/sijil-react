@@ -1,6 +1,9 @@
 import { Field, Formik } from "formik";
 import React, { useState } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
 import { DatePickerField } from "../framework/DatePickerField";
 import ModalSide from "../framework/ModalSide";

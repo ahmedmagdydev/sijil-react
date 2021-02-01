@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Modal } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 import styled from "styled-components";
 import ButtonPrimary from "../framework/ButtonPrimary";
 

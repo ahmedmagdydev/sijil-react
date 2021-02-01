@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { hot } from "react-hot-loader";
 import DashboardSidebar from "./DashboardSidebar";
 import { useTranslation } from "react-i18next";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import styled from "styled-components";
 import Box from "../components/framework/Box";
 import { useCookies } from "react-cookie";

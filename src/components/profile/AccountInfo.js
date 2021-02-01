@@ -1,5 +1,8 @@
 import React from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useTranslation } from "react-i18next";
 import ButtonPrimary from "../framework/ButtonPrimary";
 

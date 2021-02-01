@@ -5,7 +5,8 @@ import { useTable, usePagination, useSortBy } from "react-table";
 import Pagination from "../components/framework/Pagination";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Container, Button } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import AnalyticalAddRequest from "../components/analyticalReports/AnalyticalAddRequest";
 
 const TableStyle = styled.div`

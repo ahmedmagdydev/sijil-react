@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { hot } from "react-hot-loader";
 import SearchForm from "../components/search/SearchForm";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import SearchResults from "../components/search/SearchResults";
 
 function Search() {

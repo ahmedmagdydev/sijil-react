@@ -1,9 +1,11 @@
 import React from "react";
 import { Formik } from "formik";
 import ModalSide from "../framework/ModalSide";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { DatePickerField } from "../framework/DatePickerField";
-import { Request } from "../../../dist/bundle";
 import { useTranslation } from "react-i18next";
 
 function AnalyticalAddRequest({ onModalHide, show }) {
