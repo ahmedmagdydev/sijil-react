@@ -22,6 +22,9 @@ const Invoices = React.lazy(() => import("./screens/Invoices"));
 const AnalyticalReports = React.lazy(() =>
   import("./screens/AnalyticalReports")
 );
+
+
+// TODO Ahmad please make this a switch statement and don't repeat code
 document.getElementById("root")
   ? ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>
