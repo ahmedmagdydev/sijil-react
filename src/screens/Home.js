@@ -9,17 +9,18 @@ import Requests from "../components/home/Requests";
 import { useTranslation } from "react-i18next";
 import NumberOfClients from "../components/home/NumberOfClients";
 import axios from "axios";
+import { apiBaseUrl } from "../constants/api";
 function Home() {
   const changeData = async (rate) => {
     const { data } = await axios.get(
-      `http://localhost:5000/api/lessoracceptance?period=${rate}`
+      `${apiBaseUrl}/api/lessoracceptance?period=${rate}`
     );
     setLessorRate(data);
     setActivePeriod(rate);
   };
   const getServiceRequests = async () => {
     const { data } = await axios.get(
-      `http://localhost:5000/api/lessoracceptance?period=monthly`
+      `${apiBaseUrl}/api/lessoracceptance?period=monthly`
     );
     setServiceRequests(data);
   };

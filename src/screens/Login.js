@@ -9,18 +9,19 @@ import Introduction from "../components/login/Introduction";
 import Services from "../components/login/Services";
 import CreateAccount from "../components/login/CreateAccount";
 import axios from "axios";
+import { apiBaseUrl } from "../constants/api";
 
 function Login() {
   const [services, setServices] = useState([]);
+  const [loginView, setLoginView] = useState("login");
   useEffect(() => {
     getServicesList();
   }, []);
   const getServicesList = async () => {
-    const { data } = await axios.get(`http://localhost:5000/api/serviceslist`);
+    const { data } = await axios.get(`${apiBaseUrl}/api/serviceslist`);
     setServices(data);
     console.log(`🚀 ~ file: Services.js ~ line 12 ~ data`, data);
   };
-  const [loginView, setLoginView] = useState("login");
   const handleView = (view) => {
     setLoginView(view);
   };

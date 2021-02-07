@@ -1,9 +1,9 @@
-import React from "react";
-import BTable from "react-bootstrap/Table";
+import React from 'react';
+import BTable from 'react-bootstrap/Table';
 
-import { useSortBy, useTable } from "react-table";
-import styled from "styled-components";
-import { usePrepareTable } from "../../hooks/prepareTable";
+import { useSortBy, useTable } from 'react-table';
+import styled from 'styled-components';
+import { usePrepareTable } from '../../hooks/prepareTable';
 
 const TableStyle = styled.div`
   font-size: 0.9rem;
@@ -37,14 +37,14 @@ const TableStyle = styled.div`
 `;
 
 function Requests() {
-  const { columns, data } = usePrepareTable("homerequests");
+  const { columns, data } = usePrepareTable('homerequests');
 
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data,
     },
-    useSortBy
+    useSortBy,
   );
 
   return (
@@ -57,7 +57,7 @@ function Requests() {
               {headerGroup.headers.map((column) => (
                 // eslint-disable-next-line react/jsx-key
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
+                  {column.render('Header')}
                   <span className="ml-2">
                     {column.isSorted ? (
                       column.isSortedDesc ? (
@@ -84,7 +84,7 @@ function Requests() {
                 {row.cells.map((cell) => {
                   return (
                     // eslint-disable-next-line react/jsx-key
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                   );
                 })}
                 <td>

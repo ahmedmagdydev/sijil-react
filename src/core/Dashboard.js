@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-import { hot } from "react-hot-loader";
-import DashboardSidebar from "./DashboardSidebar";
-import { useTranslation } from "react-i18next";
-import Container from "react-bootstrap/Container";
-import styled from "styled-components";
-import Box from "../components/framework/Box";
-import { useCookies } from "react-cookie";
+import React, { useEffect } from 'react';
+import { hot } from 'react-hot-loader';
+import DashboardSidebar from './DashboardSidebar';
+import { useTranslation } from 'react-i18next';
+import Container from 'react-bootstrap/Container';
+import styled from 'styled-components';
+import Box from '../components/framework/Box';
+import { useCookies } from 'react-cookie';
 const DashboardStyle = styled.div`
   display: flex;
   background-color: #f5f5fd;
   .content {
-    padding: ${(props) =>
-      props.dir === "ltr" ? "0 0 0 220px" : "0 220px 0 0"};
+    padding: ${(props) => (props.dir === 'ltr' ? '0 0 0 220px' : '0 220px 0 0')};
   }
   &-header {
     color: #1e4b5e;
@@ -28,17 +27,17 @@ const DashboardStyle = styled.div`
 `;
 function Dashboard({ title, children }) {
   const { t, i18n } = useTranslation();
-  const [cookies, setCookie, removeCookie] = useCookies(["i18next"]);
+  const [cookies, setCookie, removeCookie] = useCookies(['i18next']);
 
   useEffect(() => {
-    if (!localStorage.getItem("i18nextLng")) {
-      localStorage.setItem("i18nextLng", "ar");
+    if (!localStorage.getItem('i18nextLng')) {
+      localStorage.setItem('i18nextLng', 'ar');
     }
-    changeLanguage(localStorage.getItem("i18nextLng"));
+    changeLanguage(localStorage.getItem('i18nextLng'));
   }, []);
   const changeLanguage = (language) => {
     i18n.changeLanguage(language).then(() => {
-      setCookie("i18next", language);
+      setCookie('i18next', language);
     });
   };
   const getLang = () => i18n.language || window.localStorage.i18nLng;
@@ -46,37 +45,30 @@ function Dashboard({ title, children }) {
     <DashboardStyle
       style={{
         ...styles.container,
-        direction: getLang() === "ar" ? "rtl" : "ltr",
+        direction: getLang() === 'ar' ? 'rtl' : 'ltr',
       }}
-      dir={getLang() === "ar" ? "rtl" : "ltr"}
+      dir={getLang() === 'ar' ? 'rtl' : 'ltr'}
     >
       <DashboardSidebar />
-      <div
-        dir={getLang() === "ar" ? "rtl" : "ltr"}
-        className="content flex-grow-1"
-      >
+      <div dir={getLang() === 'ar' ? 'rtl' : 'ltr'} className="content flex-grow-1">
         <Container>
           <div className="dashboard-header px-4 pt-4 pb-2 d-flex">
             <h2>{t(title)}</h2>
-            <div
-              className={
-                (getLang() === "ar" ? "mr-auto" : "ml-auto") + " d-flex"
-              }
-            >
+            <div className={(getLang() === 'ar' ? 'mr-auto' : 'ml-auto') + ' d-flex'}>
               <Box className="mr-2">
                 <i className="fa fa-bell"></i>
               </Box>
               <Box className="mr-2">
-                Sign Out <i className="fa fa-sign-out"></i>
+                {t('SignOut')} <i className="fa fa-sign-out"></i>
               </Box>
               <Box>
                 <button
                   className="btn btn-link p-0"
                   onClick={() => {
-                    changeLanguage(i18n.language == "ar" ? "en" : "ar");
+                    changeLanguage(i18n.language == 'ar' ? 'en' : 'ar');
                   }}
                 >
-                  {i18n.language == "ar" ? "English" : "عربى"}
+                  {i18n.language == 'ar' ? 'English' : 'عربى'}
                 </button>
               </Box>
             </div>
@@ -95,4 +87,5 @@ const styles = {
     paddingRight: 220,
   },
 };
+// eslint-disable-next-line no-undef
 export default hot(module)(Dashboard);

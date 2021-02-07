@@ -1,9 +1,9 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
 const ServiceStyle = styled.a`
-  color: ${(props) => props.textColor || "#fff"};
+  color: ${(props) => props.textColor || '#fff'};
   text-align: center;
   margin-bottom: 50px;
   display: block;
@@ -23,14 +23,15 @@ const ServiceStyle = styled.a`
     }
   }
 `;
-function Service({ titleEn, link, titleAr, textColor }) {
+function Service({ titleEn, link, titleAr, textColor, iconUrl }) {
+  console.log(`🚀 ~ file: Service.js ~ line 27 ~ iconUrl`, iconUrl);
   const { i18n } = useTranslation();
   return (
     <ServiceStyle href={link} textColor={textColor}>
-      <div className={"service-icon"}>
-        <img src="serviece icons/service-icon1.jpg" alt="" />
+      <div className={'service-icon'}>
+        <img src={iconUrl} alt="" />
       </div>
-      <p>{i18n.language == "en" ? titleEn : titleAr}</p>
+      <p>{i18n.language == 'en' ? titleEn : titleAr}</p>
     </ServiceStyle>
   );
 }

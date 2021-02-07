@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Table from "react-bootstrap/Table";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import { usePrepareTable } from "../../hooks/prepareTable";
+import React from 'react';
+import styled from 'styled-components';
+import Table from 'react-bootstrap/Table';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { usePrepareTable } from '../../hooks/prepareTable';
 
 const Styles = styled.div`
   text-align: center;
@@ -48,14 +48,14 @@ const Styles = styled.div`
   }
 `;
 function ServiceStatuses() {
-  const { columns, data } = usePrepareTable("servicestatuses");
+  const { columns, data } = usePrepareTable('servicestatuses');
   return (
     <Styles>
       <Table responsive>
         <thead>
           <tr>
             {columns.map((column, index) => {
-              if (column.Header == "service" || column.Header == "الخدمة") {
+              if (column.Header == 'service' || column.Header == 'الخدمة') {
                 return <td key={index}></td>;
               } else {
                 return (
@@ -71,16 +71,16 @@ function ServiceStatuses() {
           {data.map((row, index) => {
             return (
               <tr key={index}>
-                {row["service"] ? <td>{row["service"]}</td> : null}
-                {row["الخدمة"] ? <td>{row["service"]}</td> : null}
-                {row["completed"] ? <td>{row["completed"]}</td> : null}
-                {row["انتهت"] ? <td>{row["انتهت"]}</td> : null}
-                {row["delayed"] ? <td>{row["delayed"]}</td> : null}
-                {row["تأجلت"] ? <td>{row["تأجلت"]}</td> : null}
-                {row["canceled"] ? <td>{row["canceled"]}</td> : null}
-                {row["ألغيت"] ? <td>{row["ألغيت"]}</td> : null}
-                {row["rejected"] ? <td>{row["rejected"]}</td> : null}
-                {row["رفضت"] ? <td>{row["رفضت"]}</td> : null}
+                {row['service'] ? <td>{row['service']}</td> : null}
+                {row['الخدمة'] ? <td>{row['service']}</td> : null}
+                {row['completed'] ? <td>{row['completed']}</td> : null}
+                {row['انتهت'] ? <td>{row['انتهت']}</td> : null}
+                {row['delayed'] ? <td>{row['delayed']}</td> : null}
+                {row['تأجلت'] ? <td>{row['تأجلت']}</td> : null}
+                {row['canceled'] ? <td>{row['canceled']}</td> : null}
+                {row['ألغيت'] ? <td>{row['ألغيت']}</td> : null}
+                {row['rejected'] ? <td>{row['rejected']}</td> : null}
+                {row['رفضت'] ? <td>{row['رفضت']}</td> : null}
               </tr>
             );
           })}
@@ -92,20 +92,20 @@ function ServiceStatuses() {
 function WithToolTip({ title }) {
   const getIcon = (title) => {
     switch (title) {
-      case "completed":
-      case "انتهت":
-        return "check";
-      case "delayed":
-      case "تأجلت":
-        return "clock-o";
-      case "canceled":
-      case "ألغيت":
-        return "close";
-      case "rejected":
-      case "رفضت":
-        return "close fa-close-2";
+      case 'completed':
+      case 'انتهت':
+        return 'check';
+      case 'delayed':
+      case 'تأجلت':
+        return 'clock-o';
+      case 'canceled':
+      case 'ألغيت':
+        return 'close';
+      case 'rejected':
+      case 'رفضت':
+        return 'close fa-close-2';
       default:
-        return "";
+        return '';
     }
   };
   return (
