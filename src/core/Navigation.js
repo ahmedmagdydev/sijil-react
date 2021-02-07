@@ -63,6 +63,12 @@ function Navigation() {
         </a>
       </li>
       <li>
+        <a href="search" className={`d-block ${activeLink("search")}`}>
+          <i className={"fa fa-search"}></i>
+          {t("search")}
+        </a>
+      </li>
+      <li>
         <a href="dashboard" className={`d-block ${activeLink("dashboard")}`}>
           <i className={"fa fa-th"}></i>
           {t("dashboard")}

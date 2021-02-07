@@ -18,4 +18,5 @@ function Search() {
   );
 }
 
+// eslint-disable-next-line no-undef
 export default hot(module)(Search);

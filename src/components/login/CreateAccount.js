@@ -27,8 +27,8 @@ function CreateAccount() {
         </div>
       </div>
       <p className="text-left ">
-        Note: if you don't have registration form our team will gladly assist
-        you. Contact us at rm@sijil.com
+        Note: if you don&apos;t have registration form our team will gladly
+        assist you. Contact us at rm@sijil.com
       </p>
     </div>
   );

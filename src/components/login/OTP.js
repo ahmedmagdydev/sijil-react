@@ -36,7 +36,7 @@ function OTP({ show, handleClose }) {
   const [OtpTimer, setOtpTimer] = useState(2 * 60);
   useEffect(() => {
     if (show && OtpTimer > 0) {
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         setOtpTimer(OtpTimer - 1);
       }, 1000);
     }

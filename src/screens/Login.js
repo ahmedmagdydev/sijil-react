@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginForm from "../components/login/LoginForm";
 
 import "./login.css";
@@ -8,34 +8,18 @@ import Container from "react-bootstrap/Container";
 import Introduction from "../components/login/Introduction";
 import Services from "../components/login/Services";
 import CreateAccount from "../components/login/CreateAccount";
+import axios from "axios";
 
-const servicesList = [
-  {
-    title: "Contract Details",
-    link: "contractDetails",
-  },
-  {
-    title: "Repossession Request",
-    link: "RepossessionRequest",
-  },
-  {
-    title: "Contract Details",
-    link: "contractDetails",
-  },
-  {
-    title: "Repossession Request",
-    link: "RepossessionRequest",
-  },
-  {
-    title: "Contract Details",
-    link: "contractDetails",
-  },
-  {
-    title: "Repossession Request",
-    link: "RepossessionRequest",
-  },
-];
 function Login() {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    getServicesList();
+  }, []);
+  const getServicesList = async () => {
+    const { data } = await axios.get(`http://localhost:5000/api/serviceslist`);
+    setServices(data);
+    console.log(`🚀 ~ file: Services.js ~ line 12 ~ data`, data);
+  };
   const [loginView, setLoginView] = useState("login");
   const handleView = (view) => {
     setLoginView(view);
@@ -60,7 +44,7 @@ function Login() {
           </div>
         </div>
         <Introduction />
-        <Services servicesList={servicesList} />
+        <Services servicesList={services} />
         <div className="video">
           <Container>
             <div className="p-5">
@@ -85,4 +69,5 @@ function Login() {
   }
 }
 
+// eslint-disable-next-line no-undef
 export default hot(module)(Login);

@@ -7,6 +7,7 @@ export const DatePickerField = ({ ...props }) => {
   const [field] = useField(props);
   return (
     <DatePicker
+      autocomplete="false"
       className="form-control"
       {...field}
       {...props}

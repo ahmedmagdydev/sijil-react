@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import AnalyticalAddRequest from "../components/analyticalReports/AnalyticalAddRequest";
+import Notification from "../components/framework/Notification";
 
 const TableStyle = styled.div`
   table {
@@ -36,6 +37,7 @@ const TableStyle = styled.div`
 function AnalyticalReports() {
   const { t } = useTranslation();
   const [data, setData] = React.useState([]);
+  const [requestState, setRequestState] = React.useState();
   const [showAddRequest, setShowAddRequest] = React.useState(false);
   const columns = React.useMemo(
     () => [
@@ -91,87 +93,123 @@ function AnalyticalReports() {
     useSortBy,
     usePagination
   );
-  return (
-    <TableStyle>
+  if (requestState == "success") {
+    return (
       <Container>
         <div className="px-4">
-          <div className="mb-4">
-            <Button onClick={() => setShowAddRequest(true)}>Add Request</Button>
-          </div>
-          <BTable responsive striped {...getTableProps()}>
-            <thead>
-              {headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
-                    <th
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                    >
-                      {column.render("Header")}
-                      <span className="ml-2">
-                        {column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <i className="fa fa-sort-down"></i>
-                          ) : (
-                            <i className="fa fa-sort-up"></i>
-                          )
-                        ) : (
-                          <i className="fa fa-unsorted"></i>
-                        )}
-                      </span>
-                    </th>
-                  ))}
-                  <th>Download</th>
-                </tr>
-              ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-              {page.map((row, i) => {
-                prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
-                      return (
-                        <td {...cell.getCellProps()}>
-                          <div>{cell.render("Cell")}</div>
-                        </td>
-                      );
-                    })}
-                    <td>
-                      <div>
-                        <a href={row.original.download.excel}>
-                          <img
-                            src="icons/excel.jpg"
-                            style={{ width: "17px", margin: " 0 5px" }}
-                          />
-                        </a>
-                        <a href={row.original.download.pdf}>
-                          <img
-                            src="icons/pdf.jpg"
-                            style={{ width: "17px", margin: " 0 5px" }}
-                          />
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </BTable>
+          <hr />
+          <h4 className="pb-3">Successfull</h4>
+          <Notification
+            alert="success"
+            content="Request ID 1312143 was created successfully"
+          />
         </div>
-        <Pagination
-          gotoPage={gotoPage}
-          previousPage={previousPage}
-          pageCount={pageCount}
-          pageIndex={pageIndex}
-          nextPage={nextPage}
-        />
       </Container>
-      <AnalyticalAddRequest
-        show={showAddRequest}
-        onModalHide={() => setShowAddRequest(false)}
-      />
-    </TableStyle>
-  );
+    );
+  } else if (requestState == "warning") {
+    return (
+      <Container>
+        <div className="px-4">
+          <hr />
+          <h4 className="pb-3">Successfull</h4>
+          <Notification
+            alert="warning"
+            content="Request ID 1312143 was not created successfully"
+          />
+        </div>
+      </Container>
+    );
+  } else {
+    return (
+      <TableStyle>
+        <Container>
+          <div className="px-4">
+            <div className="mb-4">
+              <Button onClick={() => setShowAddRequest(true)}>
+                Add Request
+              </Button>
+            </div>
+            <BTable responsive striped {...getTableProps()}>
+              <thead>
+                {headerGroups.map((headerGroup) => (
+                  <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map((column) => (
+                      <th
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
+                      >
+                        {column.render("Header")}
+                        <span className="ml-2">
+                          {column.isSorted ? (
+                            column.isSortedDesc ? (
+                              <i className="fa fa-sort-down"></i>
+                            ) : (
+                              <i className="fa fa-sort-up"></i>
+                            )
+                          ) : (
+                            <i className="fa fa-unsorted"></i>
+                          )}
+                        </span>
+                      </th>
+                    ))}
+                    <th>Download</th>
+                  </tr>
+                ))}
+              </thead>
+              <tbody {...getTableBodyProps()}>
+                {page.map((row, i) => {
+                  prepareRow(row);
+                  return (
+                    <tr {...row.getRowProps()}>
+                      {row.cells.map((cell) => {
+                        return (
+                          <td {...cell.getCellProps()}>
+                            <div>{cell.render("Cell")}</div>
+                          </td>
+                        );
+                      })}
+                      <td>
+                        <div>
+                          <a href={row.original.download.excel}>
+                            <img
+                              src="icons/excel.jpg"
+                              style={{ width: "17px", margin: " 0 5px" }}
+                            />
+                          </a>
+                          <a href={row.original.download.pdf}>
+                            <img
+                              src="icons/pdf.jpg"
+                              style={{ width: "17px", margin: " 0 5px" }}
+                            />
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </BTable>
+          </div>
+          <Pagination
+            gotoPage={gotoPage}
+            previousPage={previousPage}
+            pageCount={pageCount}
+            pageIndex={pageIndex}
+            nextPage={nextPage}
+          />
+        </Container>
+        <AnalyticalAddRequest
+          show={showAddRequest}
+          onModalHide={() => setShowAddRequest(false)}
+          onFormSubmit={(data) => {
+            console.log("data: ", data);
+            setRequestState("warning");
+          }}
+        />
+      </TableStyle>
+    );
+  }
 }
 
 export default hot(module)(AnalyticalReports);

@@ -1,59 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { hot } from "react-hot-loader";
-import Chart from "../components/Chart";
+import Chart from "../components/framework/Chart";
 import Box from "../components/framework/Box";
-import { data } from "../lessorAcceptanceRate";
-import { _rows, _columns } from "../components/home/ServiceStatusesData";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import ServiceStatuses from "../components/home/ServiceStatuses";
 import Requests from "../components/home/Requests";
 import { useTranslation } from "react-i18next";
 import NumberOfClients from "../components/home/NumberOfClients";
+import axios from "axios";
 function Home() {
-  const changeData = (rate, interval) => {
-    const _data = data[rate];
-    setLessorRate({ data: _data, interval });
+  const changeData = async (rate) => {
+    const { data } = await axios.get(
+      `http://localhost:5000/api/lessoracceptance?period=${rate}`
+    );
+    setLessorRate(data);
+    setActivePeriod(rate);
   };
-  const [lessorRate, setLessorRate] = useState({
-    data: data["yearly"],
-    interval: 1000 * 3600 * 24 * 30,
-  });
+  const getServiceRequests = async () => {
+    const { data } = await axios.get(
+      `http://localhost:5000/api/lessoracceptance?period=monthly`
+    );
+    setServiceRequests(data);
+  };
+  const [lessorRate, setLessorRate] = useState();
+  const [activePeriod, setActivePeriod] = useState();
+  const [serviceRequests, setServiceRequests] = useState();
+  useEffect(() => {
+    changeData("weekly");
+    getServiceRequests();
+  }, []);
   const { t } = useTranslation();
+  const isActive = (period) => {
+    return activePeriod == period ? "active" : "";
+  };
   return (
     <Container>
       <div className="p-4">
         <div className="row">
           <div className="col-md-7">
             <Box title={t("LessorAcceptanceRate")}>
-              <Chart data={lessorRate.data} interval={lessorRate.interval} />
+              <Chart data={lessorRate} />
               <div className="d-flex justify-content-between px-4">
-                <Button className="flex-grow-1 mr-1" variant="outline-primary">
+                <Button
+                  onClick={() => {
+                    changeData("weekly");
+                  }}
+                  className={`flex-grow-1 mr-1 ${isActive("weekly")}`}
+                  variant="outline-primary"
+                >
                   Weekly
                 </Button>
                 <Button
-                  className="flex-grow-1 mr-1"
+                  className={`flex-grow-1 mr-1 ${isActive("monthly")}`}
                   variant="outline-primary"
                   onClick={() => {
-                    changeData("monthly", 1000 * 3600 * 24);
+                    changeData("monthly");
                   }}
                 >
                   Monthly
                 </Button>
                 <Button
-                  className="flex-grow-1 mr-1"
+                  className={`flex-grow-1 mr-1 ${isActive("sixMonths")}`}
                   variant="outline-primary"
                   onClick={() => {
-                    changeData("sixMonths", (1000 * 3600 * 24 * 30) / 2);
+                    changeData("sixMonths");
                   }}
                 >
                   6 months
                 </Button>
                 <Button
-                  className="flex-grow-1"
+                  className={`flex-grow-1 ${isActive("yearly")}`}
                   variant="outline-primary"
                   onClick={() => {
-                    changeData("yearly", 1000 * 3600 * 24 * 30);
+                    changeData("yearly");
                   }}
                 >
                   Yearly
@@ -61,7 +81,7 @@ function Home() {
               </div>
             </Box>
             <Box title="Service Request by month">
-              <Chart data={data.monthly} interval={1000 * 3600 * 24} />
+              <Chart data={serviceRequests} />
             </Box>
           </div>
           <div className="col-md-5">
@@ -86,4 +106,5 @@ function Home() {
     </Container>
   );
 }
+// eslint-disable-next-line no-undef
 export default hot(module)(Home);

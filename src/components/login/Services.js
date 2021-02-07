@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Service from "../Service";
+import Service from "../framework/Service";
 
 function Services({ servicesList }) {
   return (
@@ -13,7 +13,11 @@ function Services({ servicesList }) {
               <div className="row">
                 {servicesList.map((item, index) => (
                   <div className="col-md-4 col-6" key={index}>
-                    <Service link={item.link} title={item.title} />
+                    <Service
+                      link={item.link}
+                      titleEn={item.titleEn}
+                      titleAr={item.titleAr}
+                    />
                   </div>
                 ))}
               </div>

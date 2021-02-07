@@ -5,7 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "eslint-check": "eslint --print-config src/index.js "
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -23,6 +36,8 @@
     "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "5.1.1",
     "css-loader": "1.0.0",
+    "eslint": "^7.19.0",
+    "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
     "style-loader": "0.23.0",
@@ -32,7 +47,9 @@
     "webpack-dev-server": "3.1.8"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@hot-loader/react-dom": "^17.0.1",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "formik": "^2.2.6",
     "highcharts": "^8.2.2",

@@ -3,6 +3,7 @@ import BTable from "react-bootstrap/Table";
 
 import { useSortBy, useTable } from "react-table";
 import styled from "styled-components";
+import { usePrepareTable } from "../../hooks/prepareTable";
 
 const TableStyle = styled.div`
   font-size: 0.9rem;
@@ -34,90 +35,10 @@ const TableStyle = styled.div`
     background-color: #f9fafe;
   }
 `;
-function Requests() {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Requset ID",
-        accessor: "requestId",
-      },
-      {
-        Header: "Requset Date",
-        accessor: "requestDate",
-      },
-      {
-        Header: "Requset Type",
-        accessor: "requestType",
-      },
-      {
-        Header: "CRN",
-        accessor: "CRN",
-      },
-      {
-        Header: "ARN",
-        accessor: "ARN",
-      },
-      {
-        Header: "Contract Open Date",
-        accessor: "contractOpenDate",
-      },
-      {
-        Header: "Approval Date",
-        accessor: "approvalDate",
-      },
-      {
-        Header: "Status",
-        accessor: "status",
-      },
-    ],
-    []
-  );
 
-  const data = React.useMemo(
-    () => [
-      {
-        requestId: 1,
-        requestDate: "13 Jan 2021 at 12:00 am",
-        requestType: "request type",
-        CRN: "CRN",
-        ARN: "ARN",
-        contractOpenDate: "13 Jan 2002 at 12:00 pm",
-        approvalDate: "13 Jan 2002 at 12:00 pm",
-        status: "status",
-      },
-      {
-        requestId: 2,
-        requestDate: "13 Jan 2021 at 12:00 am",
-        requestType: "request type",
-        CRN: "CRN",
-        ARN: "ARN",
-        contractOpenDate: "13 Jan 2002 at 12:00 pm",
-        approvalDate: "13 Jan 2002 at 12:00 pm",
-        status: "status",
-      },
-      {
-        requestId: 3,
-        requestDate: "13 Jan 2021 at 12:00 am",
-        requestType: "request type",
-        CRN: "CRN",
-        ARN: "ARN",
-        contractOpenDate: "13 Jan 2002 at 12:00 pm",
-        approvalDate: "13 Jan 2002 at 12:00 pm",
-        status: "status",
-      },
-      {
-        requestId: 4,
-        requestDate: "13 Jan 2021 at 12:00 am",
-        requestType: "request type",
-        CRN: "CRN",
-        ARN: "ARN",
-        contractOpenDate: "13 Jan 2002 at 12:00 pm",
-        approvalDate: "13 Jan 2002 at 12:00 pm",
-        status: "status",
-      },
-    ],
-    []
-  );
+function Requests() {
+  const { columns, data } = usePrepareTable("homerequests");
+
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
@@ -125,14 +46,16 @@ function Requests() {
     },
     useSortBy
   );
-  const handleAction = (row, i) => {};
+
   return (
     <TableStyle>
       <BTable striped bordered responsive hover size="sm" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
+            // eslint-disable-next-line react/jsx-key
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
+                // eslint-disable-next-line react/jsx-key
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span className="ml-2">
@@ -153,23 +76,19 @@ function Requests() {
           ))}
         </thead>
         <tbody>
-          {rows.map((row, i) => {
+          {rows.map((row) => {
             prepareRow(row);
             return (
+              // eslint-disable-next-line react/jsx-key
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
+                    // eslint-disable-next-line react/jsx-key
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
                 <td>
-                  <button
-                    type="button"
-                    className="btn btn-link"
-                    onClick={() => {
-                      handleAction(row, i);
-                    }}
-                  >
+                  <button type="button" className="btn btn-link">
                     :
                   </button>
                 </td>

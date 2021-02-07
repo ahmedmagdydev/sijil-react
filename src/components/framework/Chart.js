@@ -14,7 +14,7 @@ function Chart({ data, interval }) {
     legend: { enabled: false },
     xAxis: {
       type: "datetime",
-      tickInterval: interval,
+      // tickInterval: interval,
       dateTimeLabelFormats: {
         month: "%b",
         year: "%b",

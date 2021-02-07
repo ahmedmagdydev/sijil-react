@@ -7,7 +7,7 @@ import ResetPassword from "./ResetPassword";
 import { useTranslation } from "react-i18next";
 
 function LoginForm({ onViewChange }) {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const createAccount = () => {
     onViewChange("createAccount");

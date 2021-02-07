@@ -28,7 +28,6 @@ const PaginationStyle = styled.div`
 `;
 function Pagination({ ...props }) {
   const { t } = useTranslation();
-  console.log(`🚀 ~ file: Pagination.js ~ line 29 ~ props`, props);
   return (
     <PaginationStyle>
       <div onClick={() => props.gotoPage(0)}>{t("First")}</div>

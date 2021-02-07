@@ -3,7 +3,10 @@ import styled from "styled-components";
 import Table from "react-bootstrap/Table";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { usePrepareTable } from "../../hooks/prepareTable";
+
 const Styles = styled.div`
+  text-align: center;
   thead tr td {
     border-top: 0;
     padding: 0.45rem;
@@ -15,6 +18,7 @@ const Styles = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: auto;
       &.fa-check {
         color: #2ac299;
       }
@@ -44,62 +48,70 @@ const Styles = styled.div`
   }
 `;
 function ServiceStatuses() {
+  const { columns, data } = usePrepareTable("servicestatuses");
   return (
     <Styles>
       <Table responsive>
         <thead>
           <tr>
-            <td></td>
-            <td>
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>completed</Tooltip>}
-              >
-                <i className="fa fa-check"></i>
-              </OverlayTrigger>
-            </td>
-            <td>
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>delayed</Tooltip>}
-              >
-                <i className="fa fa-clock-o"></i>
-              </OverlayTrigger>
-            </td>
-            <td>
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>canceled</Tooltip>}
-              >
-                <i className="fa fa-close"></i>
-              </OverlayTrigger>
-            </td>
-            <td>
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>rejected</Tooltip>}
-              >
-                <i className="fa fa-close fa-close-2"></i>
-              </OverlayTrigger>
-            </td>
+            {columns.map((column, index) => {
+              if (column.Header == "service" || column.Header == "الخدمة") {
+                return <td key={index}></td>;
+              } else {
+                return (
+                  <td key={index}>
+                    <WithToolTip title={column.Header} />
+                  </td>
+                );
+              }
+            })}
           </tr>
         </thead>
         <tbody>
-          {Array.from({ length: 8 }).map((_, index) => (
-            <tr key={index}>
-              <td>
-                <a href="#">contract registration</a>
-              </td>
-              <td>21</td>
-              <td>213</td>
-              <td>109</td>
-              <td>12</td>
-            </tr>
-          ))}
+          {data.map((row, index) => {
+            return (
+              <tr key={index}>
+                {row["service"] ? <td>{row["service"]}</td> : null}
+                {row["الخدمة"] ? <td>{row["service"]}</td> : null}
+                {row["completed"] ? <td>{row["completed"]}</td> : null}
+                {row["انتهت"] ? <td>{row["انتهت"]}</td> : null}
+                {row["delayed"] ? <td>{row["delayed"]}</td> : null}
+                {row["تأجلت"] ? <td>{row["تأجلت"]}</td> : null}
+                {row["canceled"] ? <td>{row["canceled"]}</td> : null}
+                {row["ألغيت"] ? <td>{row["ألغيت"]}</td> : null}
+                {row["rejected"] ? <td>{row["rejected"]}</td> : null}
+                {row["رفضت"] ? <td>{row["رفضت"]}</td> : null}
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </Styles>
   );
 }
-
+function WithToolTip({ title }) {
+  const getIcon = (title) => {
+    switch (title) {
+      case "completed":
+      case "انتهت":
+        return "check";
+      case "delayed":
+      case "تأجلت":
+        return "clock-o";
+      case "canceled":
+      case "ألغيت":
+        return "close";
+      case "rejected":
+      case "رفضت":
+        return "close fa-close-2";
+      default:
+        return "";
+    }
+  };
+  return (
+    <OverlayTrigger placement="top" overlay={<Tooltip>{title}</Tooltip>}>
+      <i className={`fa fa-${getIcon(title)}`}></i>
+    </OverlayTrigger>
+  );
+}
 export default ServiceStatuses;

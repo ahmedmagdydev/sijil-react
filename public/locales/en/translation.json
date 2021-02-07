@@ -18,6 +18,7 @@
   "users": "Users",
   "First": "First",
   "Last": "Last",
+  "requestId": "Requset ID",
   "profileScreen": {
     "AccountInformation": "Account Information",
     "History": "History"

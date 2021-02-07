@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import { DatePickerField } from "../framework/DatePickerField";
 import { useTranslation } from "react-i18next";
 
-function AnalyticalAddRequest({ onModalHide, show }) {
+function AnalyticalAddRequest({ onModalHide, show, onFormSubmit }) {
   const { t } = useTranslation();
   return (
     <ModalSide title="Add Request" onModalHide={onModalHide} show={show}>
@@ -20,8 +20,8 @@ function AnalyticalAddRequest({ onModalHide, show }) {
         }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          console.log("submit: ", data);
           setSubmitting(false);
+          onFormSubmit(data);
         }}
       >
         {({

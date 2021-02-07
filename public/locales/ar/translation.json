@@ -18,6 +18,7 @@
   "users": "المستخدمون",
   "First": "الأول",
   "Last": "الأخير",
+  "requestId": "رقم الطلب",
   "profileScreen": {
     "AccountInformation": "معلومات الحساب",
     "History": "السجل"

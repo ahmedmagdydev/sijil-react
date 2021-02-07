@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "react-datepicker/dist/react-datepicker.css";
 import ButtonPrimary from "../framework/ButtonPrimary";
 import { DatePickerField } from "../framework/DatePickerField";
 import { useTranslation } from "react-i18next";

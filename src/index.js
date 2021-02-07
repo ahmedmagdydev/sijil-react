@@ -1,27 +1,22 @@
+import "@babel/polyfill";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "./i18n";
 import "./index.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import Home from "./screens/Home";
+import "react-datepicker/dist/react-datepicker.css";
 const Home = React.lazy(() => import("./screens/Home"));
-// import Profile from "./screens/Profile";
-
 const Profile = React.lazy(() => import("./screens/Profile"));
-// import Login from "./screens/Login";
 const Login = React.lazy(() => import("./screens/Login"));
-// import Dashboard from "./core/Dashboard";
 const Dashboard = React.lazy(() => import("./core/Dashboard"));
-// import Search from "./screens/Search";
 const Search = React.lazy(() => import("./screens/Search"));
-// import Documentation from "./screens/Documentation";
 const Documentation = React.lazy(() => import("./screens/Documentation"));
-// import Invoices from "./screens/Invoices";
 const Invoices = React.lazy(() => import("./screens/Invoices"));
-// import AnalyticalReports from "./screens/AnalyticalReports";
 const AnalyticalReports = React.lazy(() =>
   import("./screens/AnalyticalReports")
 );
+const Services = React.lazy(() => import("./screens/Services"));
+const Users = React.lazy(() => import("./screens/Users"));
 document.getElementById("root")
   ? ReactDOM.render(
       <Suspense fallback={<div>Loading...</div>}>
@@ -82,6 +77,24 @@ document.getElementById("root")
         </Dashboard>
       </Suspense>,
       document.getElementById("analyticalReports")
+    )
+  : document.getElementById("services")
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Services">
+          <Services />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById("services")
+    )
+  : document.getElementById("users")
+  ? ReactDOM.render(
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard title="Users">
+          <Users />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById("users")
     )
   : null;
 AnalyticalReports;

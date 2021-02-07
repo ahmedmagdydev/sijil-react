@@ -6,15 +6,23 @@ import Container from "react-bootstrap/Container";
 import styled from "styled-components";
 import Box from "../components/framework/Box";
 import { useCookies } from "react-cookie";
-const HeaderStyle = styled.div`
-  color: #1e4b5e;
-  button {
+const DashboardStyle = styled.div`
+  display: flex;
+  background-color: #f5f5fd;
+  .content {
+    padding: ${(props) =>
+      props.dir === "ltr" ? "0 0 0 220px" : "0 220px 0 0"};
+  }
+  &-header {
     color: #1e4b5e;
-    outline: none;
-    &:focus {
-      text-decoration: none;
-      border: 0;
-      box-shadow: none;
+    button {
+      color: #1e4b5e;
+      outline: none;
+      &:focus {
+        text-decoration: none;
+        border: 0;
+        box-shadow: none;
+      }
     }
   }
 `;
@@ -35,7 +43,7 @@ function Dashboard({ title, children }) {
   };
   const getLang = () => i18n.language || window.localStorage.i18nLng;
   return (
-    <div
+    <DashboardStyle
       style={{
         ...styles.container,
         direction: getLang() === "ar" ? "rtl" : "ltr",
@@ -44,11 +52,11 @@ function Dashboard({ title, children }) {
     >
       <DashboardSidebar />
       <div
-        style={getLang() === "ar" ? styles.contentAr : styles.contentEn}
-        className="flex-grow-1"
+        dir={getLang() === "ar" ? "rtl" : "ltr"}
+        className="content flex-grow-1"
       >
         <Container>
-          <HeaderStyle className="px-4 pt-4 pb-2 d-flex">
+          <div className="dashboard-header px-4 pt-4 pb-2 d-flex">
             <h2>{t(title)}</h2>
             <div
               className={
@@ -72,18 +80,14 @@ function Dashboard({ title, children }) {
                 </button>
               </Box>
             </div>
-          </HeaderStyle>
+          </div>
         </Container>
         {children}
       </div>
-    </div>
+    </DashboardStyle>
   );
 }
 const styles = {
-  container: {
-    display: "flex",
-    backgroundColor: "#f5f5fd",
-  },
   contentEn: {
     paddingLeft: 220,
   },
