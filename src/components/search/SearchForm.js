@@ -1,13 +1,12 @@
-import React from "react";
-import { Formik, Field } from "formik";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import ButtonPrimary from "../framework/ButtonPrimary";
-import { DatePickerField } from "../framework/DatePickerField";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
+import React from 'react';
+import { Formik, Field } from 'formik';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ButtonPrimary from '../framework/ButtonPrimary';
+import { DatePickerField } from '../framework/DatePickerField';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 const To = styled.div`
   display: flex;
   justify-content: center;
@@ -34,43 +33,37 @@ function SearchForm({ onShowSearchResults }) {
       <div className="p-2 pl-3 pr-5">
         <Formik
           initialValues={{
-            RequestDate: "",
-            CRN: "",
-            ARN: "",
-            ContractNumber: "",
-            ContractType: "",
-            AnyUniqueID: "",
-            UniqueIdType: "",
-            FileName: "",
-            City: "",
-            LesseeNationalID: "",
-            DateRangeFrom: "",
-            DateRangeTo: "",
-            Status: "",
-            ContractOpenDate: "",
-            ApprovalDate: "",
-            ModifiedOn: "",
-            PaymentStatus: "",
-            ContractType: "",
+            RequestDate: '',
+            CRN: '',
+            ARN: '',
+            ContractNumber: '',
+            ContractName: '',
+            AnyUniqueID: '',
+            UniqueIdType: '',
+            FileName: '',
+            City: '',
+            LesseeNationalID: '',
+            DateRangeFrom: '',
+            DateRangeTo: '',
+            Status: '',
+            ContractOpenDate: '',
+            ApprovalDate: '',
+            ModifiedOn: '',
+            PaymentStatus: '',
+            ContractType: '',
           }}
           onSubmit={(data, { setSubmitting }) => {
             setSubmitting(true);
             onShowSearchResults();
-            console.log("submit: ", data);
+            console.log('submit: ', data);
             setSubmitting(false);
           }}
         >
-          {({
-            values,
-            isSubmitting,
-            handleSubmit,
-            handleChange,
-            handleBlur,
-          }) => (
+          {({ values, isSubmitting, handleSubmit, handleChange, handleBlur }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.RequestDate")}
+                  {t('SearchScreen.RequestDate')}
                 </Form.Label>
                 <Col sm={4}>
                   <DatePickerField name="RequestDate" />
@@ -79,13 +72,13 @@ function SearchForm({ onShowSearchResults }) {
 
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.CRN")}
+                  {t('SearchScreen.CRN')}
                 </Form.Label>
                 <Col sm={4}>
                   <Field type="text" as={Form.Control} name="CRN" />
                 </Col>
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ARN")}
+                  {t('SearchScreen.ARN')}
                 </Form.Label>
                 <Col sm={4}>
                   <Field type="text" as={Form.Control} name="ARN" />
@@ -94,28 +87,28 @@ function SearchForm({ onShowSearchResults }) {
 
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ContractNumber")}
+                  {t('SearchScreen.ContractNumber')}
                 </Form.Label>
                 <Col sm={4}>
                   <Field type="text" as={Form.Control} name="ContractNumber" />
                 </Col>
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ContractType")}
+                  {t('SearchScreen.ContractName')}
                 </Form.Label>
                 <Col sm={4}>
-                  <Field type="text" as={Form.Control} name="ContractType" />
+                  <Field type="text" as={Form.Control} name="ContractName" />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.AnyUniqueID")}
+                  {t('SearchScreen.AnyUniqueID')}
                 </Form.Label>
                 <Col sm={4}>
                   <Field type="text" as={Form.Control} name="AnyUniqueID" />
                 </Col>
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.UniqueIdType")}
+                  {t('SearchScreen.UniqueIdType')}
                 </Form.Label>
                 <Col sm={4}>
                   <Form.Control
@@ -137,7 +130,7 @@ function SearchForm({ onShowSearchResults }) {
 
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.FileName")}
+                  {t('SearchScreen.FileName')}
                 </Form.Label>
                 <Col sm={10}>
                   <Field type="text" as={Form.Control} name="FileName" />
@@ -145,42 +138,35 @@ function SearchForm({ onShowSearchResults }) {
               </Form.Group>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.City")}
+                  {t('SearchScreen.City')}
                 </Form.Label>
                 <Col sm={4}>
                   <Field type="text" as={Form.Control} name="City" />
                 </Col>
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.LesseeNationalID")}
+                  {t('SearchScreen.LesseeNationalID')}
                 </Form.Label>
                 <Col sm={4}>
-                  <Field
-                    type="text"
-                    as={Form.Control}
-                    name="LesseeNationalID"
-                  />
+                  <Field type="text" as={Form.Control} name="LesseeNationalID" />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.DateRanges")}
+                  {t('SearchScreen.DateRanges')}
                 </Form.Label>
                 <Col sm={10}>
                   <div className="d-flex">
                     <DatePickerField name="DateRangeFrom" />
                     <To>
-                      <p>{t("to")}</p>
+                      <p>{t('to')}</p>
                     </To>
-                    <DatePickerField
-                      name="DateRangeTo"
-                      minDate={values.DateRangeFrom}
-                    />
+                    <DatePickerField name="DateRangeTo" minDate={values.DateRangeFrom} />
                   </div>
                 </Col>
               </Form.Group>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.Status")}
+                  {t('SearchScreen.Status')}
                 </Form.Label>
                 <Col sm={4}>
                   <Form.Control
@@ -199,33 +185,29 @@ function SearchForm({ onShowSearchResults }) {
               </Form.Group>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ContractOpenDate")}
+                  {t('SearchScreen.ContractOpenDate')}
                 </Form.Label>
                 <Col sm={4}>
-                  <Field
-                    type="date"
-                    as={Form.Control}
-                    name="ContractOpenDate"
-                  />
+                  <DatePickerField name="ContractOpenDate" />
                 </Col>
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ApprovalDate")}
+                  {t('SearchScreen.ApprovalDate')}
                 </Form.Label>
                 <Col sm={4}>
-                  <Field type="date" as={Form.Control} name="ApprovalDate" />
+                  <DatePickerField name="ApprovalDate" />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ModifiedOn")}
+                  {t('SearchScreen.ModifiedOn')}
                 </Form.Label>
                 <Col sm={4}>
-                  <Field type="date" as={Form.Control} name="ModifiedOn" />
+                  <DatePickerField name="ModifiedOn" />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} className="align-items-center">
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.PaymentStatus")}
+                  {t('SearchScreen.PaymentStatus')}
                 </Form.Label>
                 <Col sm={4}>
                   <Form.Control
@@ -241,7 +223,7 @@ function SearchForm({ onShowSearchResults }) {
                   </Form.Control>
                 </Col>
                 <Form.Label column sm={2}>
-                  {t("SearchScreen.ContractType")}
+                  {t('SearchScreen.ContractType')}
                 </Form.Label>
                 <Col sm={4}>
                   <Form.Control
@@ -261,9 +243,9 @@ function SearchForm({ onShowSearchResults }) {
                 type="text"
                 disabled={isSubmitting}
                 className=" py-3 px-5"
-                style={{ borderRadius: "30px", backgroundColor: "#00b2e2" }}
+                style={{ borderRadius: '30px', backgroundColor: '#00b2e2' }}
               >
-                Search <i className="fa fa-search ml-2"></i>
+                {t('search')} <i className="fa fa-search ml-2"></i>
               </ButtonPrimary>
             </Form>
           )}
