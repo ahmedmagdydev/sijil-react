@@ -7,12 +7,13 @@ import Notification from '../components/framework/Notification';
 import { usePrepareTable } from '../hooks/prepareTable';
 import TableWithPaging from '../components/framework/TableWithPaging';
 import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
 
 function AnalyticalReports() {
   const [requestState, setRequestState] = React.useState();
   const [showAddRequest, setShowAddRequest] = React.useState(false);
   const { data, columns } = usePrepareTable('invoices');
-
+  const { t } = useTranslation();
   if (requestState == 'success') {
     return (
       <Container>
@@ -38,7 +39,7 @@ function AnalyticalReports() {
       <>
         <TableWithPaging data={data} columns={columns}>
           <div className="mb-4">
-            <Button onClick={() => setShowAddRequest(true)}>Add Request</Button>
+            <Button onClick={() => setShowAddRequest(true)}>{t('Add Request')}</Button>
           </div>
         </TableWithPaging>
         <AnalyticalAddRequest

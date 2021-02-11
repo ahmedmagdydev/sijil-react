@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from "react";
-import LoginForm from "../components/login/LoginForm";
+import React, { useState, useEffect } from 'react';
+import LoginForm from '../components/login/LoginForm';
 
-import "./login.css";
-import Footer from "../components/login/Footer";
-import { hot } from "react-hot-loader";
-import Container from "react-bootstrap/Container";
-import Introduction from "../components/login/Introduction";
-import Services from "../components/login/Services";
-import CreateAccount from "../components/login/CreateAccount";
-import axios from "axios";
-import { apiBaseUrl } from "../constants/api";
+import './login.css';
+import Footer from '../components/login/Footer';
+import { hot } from 'react-hot-loader';
+import Container from 'react-bootstrap/Container';
+import Introduction from '../components/login/Introduction';
+import Services from '../components/login/Services';
+import CreateAccount from '../components/login/CreateAccount';
+
+import { useTranslation } from 'react-i18next';
+import { axiosInstance } from '../hooks/axiosRequest';
 
 function Login() {
   const [services, setServices] = useState([]);
-  const [loginView, setLoginView] = useState("login");
+  const [loginView, setLoginView] = useState('login');
+  const { i18n } = useTranslation();
   useEffect(() => {
     getServicesList();
   }, []);
   const getServicesList = async () => {
-    const { data } = await axios.get(`${apiBaseUrl}/api/serviceslist`);
+    const { data } = await axiosInstance.get(`serviceslist`);
     setServices(data);
-    console.log(`🚀 ~ file: Services.js ~ line 12 ~ data`, data);
   };
   const handleView = (view) => {
     setLoginView(view);
   };
-  if (loginView === "login") {
+  if (loginView === 'login') {
     return (
-      <>
+      <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         <div className="login-wrapper">
           <div className="p-3 p-md-4">
             <img src="logo-dark.jpg" className="mx-5" alt="" />
@@ -54,9 +59,9 @@ function Login() {
           </Container>
         </div>
         <Footer />
-      </>
+      </div>
     );
-  } else if (loginView === "createAccount") {
+  } else if (loginView === 'createAccount') {
     return (
       <>
         <div className="video">

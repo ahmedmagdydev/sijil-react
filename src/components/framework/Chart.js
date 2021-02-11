@@ -1,11 +1,11 @@
-import React from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
+import React from 'react';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
-function Chart({ data, interval }) {
+function Chart({ data }) {
   const options = {
     chart: {
-      type: "spline",
+      type: 'spline',
       height: 173,
     },
     title: {
@@ -13,11 +13,11 @@ function Chart({ data, interval }) {
     },
     legend: { enabled: false },
     xAxis: {
-      type: "datetime",
+      type: 'datetime',
       // tickInterval: interval,
       dateTimeLabelFormats: {
-        month: "%b",
-        year: "%b",
+        month: '%b',
+        year: '%b',
       },
       title: {
         text: null,
@@ -30,8 +30,8 @@ function Chart({ data, interval }) {
       min: 0,
     },
     tooltip: {
-      headerFormat: "",
-      pointFormat: " {point.y}",
+      headerFormat: '',
+      pointFormat: ' {point.y}',
     },
 
     plotOptions: {
@@ -42,7 +42,7 @@ function Chart({ data, interval }) {
       },
     },
 
-    colors: ["#6CF"],
+    colors: ['#6CF'],
     responsive: {
       rules: [
         {

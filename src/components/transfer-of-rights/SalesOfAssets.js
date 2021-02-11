@@ -173,7 +173,7 @@ function SalesOfAssets() {
                     <GroupInput
                       lang={i18n.language}
                       placeholder={t('Services.PleaseEnterARNNumber')}
-                      label={t('Services.Add')}
+                      label={t('Add')}
                       handleClick={(e) => {
                         if (e.length > 0) setFieldValue('ARN', [...values.ARN, e]);
                       }}

@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { apiBaseUrl } from "../constants/api";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { apiBaseUrl } from '../constants/api';
+import axios from 'axios';
+import { axiosInstance } from './axiosRequest';
 function usePrepareTable(api) {
   const { i18n } = useTranslation();
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
   const getServiceStatuses = async () => {
-    const { data } = await axios.get(
-      `${apiBaseUrl}/api/${api}?lang=${i18n.language}`
-    );
+    const { data } = await axiosInstance.get(`${api}?lang=${i18n.language}`);
     let columns = data.map((column) => {
       return Object.keys(column).map((key) => {
         return { Header: key, accessor: key };

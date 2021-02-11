@@ -50,61 +50,61 @@ function Navigation() {
       className="list-unstyled mt-4 navigation"
     >
       {/* <li>
-        <a href="home" className={`d-block ${activeLink("home")}`}>
+        <a href="/home" className={`d-block ${activeLink("home")}`}>
           <i className={"fa fa-home"}></i>
           {t("home")}
         </a>
       </li> */}
       <li>
-        <a href="profile" className={`d-block ${activeLink('profile')}`}>
+        <a href="/profile" className={`d-block ${activeLink('profile')}`}>
           <i className={'fa fa-user'}></i>
           {t('profile')}
         </a>
       </li>
       <li>
-        <a href="search" className={`d-block ${activeLink('search')}`}>
+        <a href="/search" className={`d-block ${activeLink('search')}`}>
           <i className={'fa fa-search'}></i>
           {t('search')}
         </a>
       </li>
       <li>
-        <a href="home" className={`d-block ${activeLink('home')}`}>
+        <a href="/home" className={`d-block ${activeLink('home')}`}>
           <i className={'fa fa-th'}></i>
           {t('dashboard')}
         </a>
       </li>
       <li>
-        <a href="services" className={`d-block ${activeLink('services')}`}>
+        <a href="/services" className={`d-block ${activeLink('services')}`}>
           <i className={'fa fa-suitcase'}></i>
           {t('services')}
         </a>
       </li>
       <li>
-        <a href="responses" className={`d-block ${activeLink('responses')}`}>
+        <a href="/responses" className={`d-block ${activeLink('responses')}`}>
           <i className={'fa fa-comment'}></i>
           {t('responses')}
         </a>
       </li>
       <li>
-        <a href="invoices" className={`d-block ${activeLink('invoices')}`}>
+        <a href="/invoices" className={`d-block ${activeLink('invoices')}`}>
           <i className={'fa fa-sticky-note'}></i>
           {t('invoices')}
         </a>
       </li>
       <li>
-        <a href="documentation" className={`d-block ${activeLink('documentation')}`}>
+        <a href="/documentation" className={`d-block ${activeLink('documentation')}`}>
           <i className={'fa fa-file'}></i>
           {t('documentation')}
         </a>
       </li>
       <li>
-        <a href="analyticalreports" className={`d-block ${activeLink('analyticalreports')}`}>
+        <a href="/analyticalreports" className={`d-block ${activeLink('analyticalreports')}`}>
           <i className={'fa fa-pie-chart'}></i>
           {t('AnalyticalReports')}
         </a>
       </li>
       <li>
-        <a href="users" className={`d-block ${activeLink('users')}`}>
+        <a href="/users" className={`d-block ${activeLink('users')}`}>
           <i className={'fa fa-users'}></i>
           {t('users')}
         </a>

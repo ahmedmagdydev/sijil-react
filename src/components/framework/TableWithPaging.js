@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Pagination from './Pagination';
 import { useTranslation } from 'react-i18next';
 const TableStyle = styled.div`
+  width: 100%;
   table {
     background: #f9fafd;
     border-radius: 18px;
@@ -19,7 +20,7 @@ const TableStyle = styled.div`
     td,
     th {
       border: none;
-      padding: 20px;
+      padding: 14px;
     }
     td {
       border-left: 1px dashed #efefef;
@@ -29,8 +30,11 @@ const TableStyle = styled.div`
     }
   }
 `;
-function TableWithPaging({ data, columns, children }) {
+function TableWithPaging({ data, columns, children, noSorting, onRowClick }) {
   const { t } = useTranslation();
+  const handleClick = (e) => {
+    onRowClick ? onRowClick(e) : null;
+  };
   const {
     getTableProps,
     getTableBodyProps,
@@ -55,7 +59,6 @@ function TableWithPaging({ data, columns, children }) {
     useSortBy,
     usePagination,
   );
-  console.log(`🚀 ~ file: TableWithPaging.js ~ line 44 ~ pageCount`, pageCount);
   return (
     <TableStyle>
       <Container>
@@ -66,19 +69,24 @@ function TableWithPaging({ data, columns, children }) {
               {headerGroups.map((headerGroup, index) => (
                 <tr key={index} {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column, i) => (
-                    <th key={index + i} {...column.getHeaderProps(column.getSortByToggleProps())}>
+                    <th
+                      key={'' + index + i}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
                       {t(column.render('Header'))}
-                      <span className="mx-2">
-                        {column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <i className="fa fa-sort-down"></i>
+                      {!noSorting ? (
+                        <span className="mx-2">
+                          {column.isSorted ? (
+                            column.isSortedDesc ? (
+                              <i className="fa fa-sort-down"></i>
+                            ) : (
+                              <i className="fa fa-sort-up"></i>
+                            )
                           ) : (
-                            <i className="fa fa-sort-up"></i>
-                          )
-                        ) : (
-                          <i className="fa fa-unsorted"></i>
-                        )}
-                      </span>
+                            <i className="fa fa-unsorted"></i>
+                          )}
+                        </span>
+                      ) : null}
                     </th>
                   ))}
                 </tr>
@@ -88,17 +96,23 @@ function TableWithPaging({ data, columns, children }) {
               {page.map((row, index) => {
                 prepareRow(row);
                 return (
-                  <tr key={index} {...row.getRowProps()}>
+                  <tr
+                    onClick={() => {
+                      handleClick(row);
+                    }}
+                    key={'100' + index}
+                    {...row.getRowProps()}
+                  >
                     {row.cells.map((cell, i) => {
                       return cell.column.Header != 'download' ? (
-                        <td key={index + i} {...cell.getCellProps()}>
+                        <td key={'100' + index + i} {...cell.getCellProps()}>
                           <div>{cell.render('Cell')}</div>
                         </td>
                       ) : (
                         <td>
                           <div>
                             {cell.value.map((item, index) => (
-                              <a href={item.url} key={index}>
+                              <a href={item.url} key={item.url + index}>
                                 <img
                                   src={'icons/' + item.type + '.jpg'}
                                   style={{ width: '17px', margin: ' 0 5px' }}

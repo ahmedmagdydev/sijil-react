@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 const GroupInputStyle = styled.div`
   position: relative;
   input {
@@ -22,6 +23,7 @@ const GroupInputStyle = styled.div`
 `;
 function GroupFileInput({ lang, handleClick, onBlur, name, placeholder, id }) {
   const [value, setValue] = useState('');
+  const { t } = useTranslation();
   return (
     <GroupInputStyle lang={lang}>
       <input
@@ -38,7 +40,7 @@ function GroupFileInput({ lang, handleClick, onBlur, name, placeholder, id }) {
         hidden
       />
       <input type="text" readOnly={true} value={value} placeholder={placeholder} />
-      <label htmlFor={id}>Browse</label>
+      <label htmlFor={id}>{t('Browse')}</label>
     </GroupInputStyle>
   );
 }

@@ -1,22 +1,22 @@
-import React from "react";
-import { Formik } from "formik";
-import ModalSide from "../framework/ModalSide";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import { DatePickerField } from "../framework/DatePickerField";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { Formik } from 'formik';
+import ModalSide from '../framework/ModalSide';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { DatePickerField } from '../framework/DatePickerField';
+import { useTranslation } from 'react-i18next';
 
 function AnalyticalAddRequest({ onModalHide, show, onFormSubmit }) {
   const { t } = useTranslation();
   return (
-    <ModalSide title="Add Request" onModalHide={onModalHide} show={show}>
+    <ModalSide title={t('Add Request')} onModalHide={onModalHide} show={show}>
       <Formik
         initialValues={{
-          ReportName: "",
-          FromDate: "",
-          ToDate: "",
+          ReportName: '',
+          FromDate: '',
+          ToDate: '',
         }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
@@ -24,18 +24,11 @@ function AnalyticalAddRequest({ onModalHide, show, onFormSubmit }) {
           onFormSubmit(data);
         }}
       >
-        {({
-          values,
-          isSubmitting,
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          resetForm,
-        }) => (
+        {({ values, handleSubmit, handleChange, handleBlur, resetForm }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("Request.ReportName")}
+                {t('Request.ReportName')}
               </Form.Label>
               <Col sm={7}>
                 <Form.Control
@@ -55,7 +48,7 @@ function AnalyticalAddRequest({ onModalHide, show, onFormSubmit }) {
 
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("Request.FromDate")}
+                {t('Request.FromDate')}
               </Form.Label>
               <Col sm={7}>
                 <DatePickerField name="FromDate" />
@@ -63,7 +56,7 @@ function AnalyticalAddRequest({ onModalHide, show, onFormSubmit }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("Request.ToDate")}
+                {t('Request.ToDate')}
               </Form.Label>
               <Col sm={7}>
                 <DatePickerField minDate={values.FromDate} name="ToDate" />
@@ -71,19 +64,11 @@ function AnalyticalAddRequest({ onModalHide, show, onFormSubmit }) {
             </Form.Group>
 
             <div className="d-flex pt-3">
-              <Button
-                type="submit"
-                className="flex-grow-1 mr-2"
-                variant="primary"
-              >
-                Request
+              <Button type="submit" className="flex-grow-1 mr-2" variant="primary">
+                {t('request')}
               </Button>
-              <Button
-                className="flex-grow-1"
-                variant="light"
-                onClick={resetForm}
-              >
-                Reset
+              <Button className="flex-grow-1" variant="light" onClick={resetForm}>
+                {t('reset')}
               </Button>
             </div>
           </Form>

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import BTable from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
+import React, { useState, useEffect } from 'react';
+import BTable from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-import { useTable, usePagination, useSortBy } from "react-table";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
-import SearchFilter from "./SearchFilter";
-import Pagination from "../framework/Pagination";
+import { useTable, usePagination, useSortBy } from 'react-table';
+import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
+import SearchFilter from './SearchFilter';
+import Pagination from '../framework/Pagination';
 
 const TableStyle = styled.div`
   text-align: center;
@@ -25,11 +25,11 @@ const TableStyle = styled.div`
   }
   tbody td {
     &:first-child > div {
-      border-radius: 15px 0 0 15px;
+      border-radius: ${(props) => (props.lang == 'en' ? '15px 0 0 15px' : '0 15px 15px 0 ')};
       font-weight: bold;
     }
     &:last-child > div {
-      border-radius: 0px 15px 15px 0;
+      border-radius: ${(props) => (props.lang == 'en' ? '0px 15px 15px 0' : '15px 0 0 15px ')};
     }
     & > div {
       background-color: #fff;
@@ -40,49 +40,48 @@ const TableStyle = styled.div`
   }
 `;
 function SearchResults() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const columns = React.useMemo(
     () => [
       {
-        Header: "File Name",
-        accessor: "fileName",
+        Header: 'File Name',
+        accessor: 'fileName',
       },
       {
-        Header: "Contract open date",
-        accessor: "contractOpenDate",
+        Header: 'Contract open date',
+        accessor: 'contractOpenDate',
       },
       {
-        Header: "Status",
-        accessor: "status",
+        Header: 'Status',
+        accessor: 'status',
       },
       {
-        Header: "Contract type",
-        accessor: "contractType",
+        Header: 'Contract type',
+        accessor: 'contractType',
       },
       {
-        Header: "Modified on",
-        accessor: "modifiedOn",
+        Header: 'Modified on',
+        accessor: 'modifiedOn',
       },
     ],
-    []
+    [],
   );
 
   //this is for demo only, you can remove it and use http request to get the data
   const [data, setData] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
-  const [sorting, setSorting] = useState("Newest To Oldest");
+  const [sorting, setSorting] = useState('Newest To Oldest');
 
   useEffect(() => {
     let dataArray = [];
     for (let i = 0; i < 90; i++) {
       dataArray.push({
-        fileName: "file name " + (i + 1),
-        contractOpenDate:
-          Math.floor(Math.random() * 91) + " Jan 2021 at 12:00 am",
-        status: "status",
-        contractType: "contract type",
-        modifiedOn: "13 Jan 2002 at 12:00 pm",
-        download: { excel: "http://file.xlx", pdf: "http://file.pdf" },
+        fileName: 'file name ' + (i + 1),
+        contractOpenDate: Math.floor(Math.random() * 91) + ' Jan 2021 at 12:00 am',
+        status: 'status',
+        contractType: 'contract type',
+        modifiedOn: '13 Jan 2002 at 12:00 pm',
+        download: { excel: 'http://file.xlx', pdf: 'http://file.pdf' },
       });
     }
     setData(dataArray);
@@ -99,7 +98,7 @@ function SearchResults() {
     nextPage,
     previousPage,
     setSortBy,
-    state: { pageIndex, pageSize },
+    state: { pageIndex },
   } = useTable(
     {
       columns,
@@ -110,7 +109,7 @@ function SearchResults() {
         manualSortBy: true,
         sortBy: [
           {
-            id: "contractOpenDate",
+            id: 'contractOpenDate',
             desc: true,
           },
         ],
@@ -118,33 +117,33 @@ function SearchResults() {
     },
 
     useSortBy,
-    usePagination
+    usePagination,
   );
   return (
     <>
       <hr />
 
-      <TableStyle className="px-5">
+      <TableStyle lang={i18n.language} className="px-5">
         <div className="table-options justify-content-end d-flex">
-          <Dropdown className="mr-3">
-            <Dropdown.Toggle variant="light">{sorting}</Dropdown.Toggle>
+          <Dropdown className={i18n.language == 'en' ? 'mr-3' : 'ml-3'}>
+            <Dropdown.Toggle variant="light">{t(sorting)}</Dropdown.Toggle>
 
             <Dropdown.Menu>
               <Dropdown.Item
                 onClick={() => {
-                  setSorting("Newest to Oldest");
-                  setSortBy([{ id: "contractOpenDate", desc: true }]);
+                  setSorting('Newest To Oldest');
+                  setSortBy([{ id: 'contractOpenDate', desc: true }]);
                 }}
               >
-                {t("Newest to Oldest")}
+                {t('Newest To Oldest')}
               </Dropdown.Item>
               <Dropdown.Item
                 onClick={() => {
-                  setSorting("Oldest to Newest");
-                  setSortBy([{ id: "contractOpenDate", desc: false }]);
+                  setSorting('Oldest to Newest');
+                  setSortBy([{ id: 'contractOpenDate', desc: false }]);
                 }}
               >
-                Oldest to Newest
+                {t('Oldest to Newest')}
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -153,7 +152,7 @@ function SearchResults() {
               setShowFilter(true);
             }}
           >
-            Filter
+            {t('Filter')}
           </Button>
         </div>
         <BTable responsive {...getTableProps()}>
@@ -161,9 +160,7 @@ function SearchResults() {
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
+                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                 ))}
                 <th>Download</th>
               </tr>
@@ -177,23 +174,17 @@ function SearchResults() {
                   {row.cells.map((cell) => {
                     return (
                       <td {...cell.getCellProps()}>
-                        <div>{cell.render("Cell")}</div>
+                        <div>{cell.render('Cell')}</div>
                       </td>
                     );
                   })}
                   <td>
                     <div>
                       <a href={row.original.download.excel}>
-                        <img
-                          src="icons/excel.jpg"
-                          style={{ width: "17px", margin: " 0 5px" }}
-                        />
+                        <img src="icons/excel.jpg" style={{ width: '17px', margin: ' 0 5px' }} />
                       </a>
                       <a href={row.original.download.pdf}>
-                        <img
-                          src="icons/pdf.jpg"
-                          style={{ width: "17px", margin: " 0 5px" }}
-                        />
+                        <img src="icons/pdf.jpg" style={{ width: '17px', margin: ' 0 5px' }} />
                       </a>
                     </div>
                   </td>

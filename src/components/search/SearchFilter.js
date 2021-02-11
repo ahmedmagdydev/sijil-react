@@ -1,45 +1,38 @@
-import { Field, Formik } from "formik";
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { useTranslation } from "react-i18next";
-import { DatePickerField } from "../framework/DatePickerField";
-import ModalSide from "../framework/ModalSide";
+import { Field, Formik } from 'formik';
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
+import { DatePickerField } from '../framework/DatePickerField';
+import ModalSide from '../framework/ModalSide';
 function SearchFilter({ show, onModalHide }) {
   const { t } = useTranslation();
   return (
-    <ModalSide show={show} onModalHide={onModalHide} title="Filter By">
+    <ModalSide show={show} onModalHide={onModalHide} title={t('Filter By')}>
       <Formik
         initialValues={{
-          DateRanges: "",
-          Status: "",
-          ApprovalOn: "",
-          CreatedOn: "",
-          AssetType: "",
-          ContractType: "",
-          ServiceType: "",
-          ServiceStatus: "",
+          DateRanges: '',
+          Status: '',
+          ApprovalOn: '',
+          CreatedOn: '',
+          AssetType: '',
+          ContractType: '',
+          ServiceType: '',
+          ServiceStatus: '',
         }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          console.log("submit: ", data);
+          console.log('submit: ', data);
           setSubmitting(false);
         }}
       >
-        {({
-          values,
-          isSubmitting,
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          resetForm,
-        }) => (
+        {({ values, isSubmitting, handleSubmit, handleChange, handleBlur, resetForm }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.DateRanges")}
+                {t('SearchScreen.DateRanges')}
               </Form.Label>
               <Col sm={7}>
                 <DatePickerField name="DateRanges" />
@@ -47,7 +40,7 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.Status")}
+                {t('SearchScreen.Status')}
               </Form.Label>
               <Col sm={7}>
                 <Field as={Form.Control} name="Status" />
@@ -55,7 +48,7 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.ApprovalOn")}
+                {t('SearchScreen.ApprovalOn')}
               </Form.Label>
               <Col sm={7}>
                 <DatePickerField name="ApprovalOn" />
@@ -63,7 +56,7 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.CreatedOn")}
+                {t('SearchScreen.CreatedOn')}
               </Form.Label>
               <Col sm={7}>
                 <DatePickerField name="CreatedOn" />
@@ -71,7 +64,7 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.AssetType")}
+                {t('SearchScreen.AssetType')}
               </Form.Label>
               <Col sm={7}>
                 <Form.Control
@@ -90,7 +83,7 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.ContractType")}
+                {t('SearchScreen.ContractType')}
               </Form.Label>
               <Col sm={7}>
                 <Form.Control
@@ -107,7 +100,7 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.ServiceType")}
+                {t('SearchScreen.ServiceType')}
               </Form.Label>
               <Col sm={7}>
                 <Form.Control
@@ -124,26 +117,18 @@ function SearchFilter({ show, onModalHide }) {
             </Form.Group>
             <Form.Group as={Row} className="align-items-center">
               <Form.Label column sm={5}>
-                {t("SearchScreen.ServiceStatus")}
+                {t('SearchScreen.ServiceStatus')}
               </Form.Label>
               <Col sm={7}>
                 <Field as={Form.Control} name="ServiceStatus" />
               </Col>
             </Form.Group>
             <div className="d-flex pt-3">
-              <Button
-                type="submit"
-                className="flex-grow-1 mr-2"
-                variant="primary"
-              >
-                Apply Filter
+              <Button type="submit" className="flex-grow-1 mr-2" variant="primary">
+                {t('Apply Filter')}
               </Button>
-              <Button
-                className="flex-grow-1"
-                variant="light"
-                onClick={resetForm}
-              >
-                Reset Filter
+              <Button className="flex-grow-1" variant="light" onClick={resetForm}>
+                {t('Reset Filter')}
               </Button>
             </div>
           </Form>

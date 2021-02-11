@@ -1,6 +1,6 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Service from "../framework/Service";
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Service from '../framework/Service';
 
 function Services({ servicesList }) {
   return (
@@ -17,6 +17,7 @@ function Services({ servicesList }) {
                       link={item.link}
                       titleEn={item.titleEn}
                       titleAr={item.titleAr}
+                      iconUrl={item.iconUrl}
                     />
                   </div>
                 ))}

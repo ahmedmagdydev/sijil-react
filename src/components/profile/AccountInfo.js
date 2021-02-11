@@ -11,8 +11,7 @@ function AccountInfo({ onChangePassword }) {
   return (
     <>
       <h4>
-        {t('profileScreen.AccountInformation')}
-        <i className="fa fa-user"></i>
+        {t('profileScreen.AccountInformation')} <i className="fa fa-user"></i>
       </h4>
       <div className="pl-4 pt-4">
         <Form>

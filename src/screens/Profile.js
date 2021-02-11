@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import { hot } from "react-hot-loader";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Notification from "../components/framework/Notification";
-import AccountInfo from "../components/profile/AccountInfo";
-import History from "../components/profile/History";
-import ChangePassword from "../components/profile/ChangePassword";
+import React, { useState } from 'react';
+import { hot } from 'react-hot-loader';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Notification from '../components/framework/Notification';
+import AccountInfo from '../components/profile/AccountInfo';
+import History from '../components/profile/History';
+import ChangePassword from '../components/profile/ChangePassword';
 const VerticalLine = styled.div`
   width: 1px;
   height: 100%;
@@ -20,14 +18,14 @@ const VerticalLine = styled.div`
 
 function Profile() {
   const { t } = useTranslation();
-  const [profileView, setProfileView] = useState("default");
+  const [profileView, setProfileView] = useState('default');
   const changePassword = () => {
-    setProfileView("change password");
+    setProfileView('change password');
   };
   const cancelChangePassword = () => {
-    setProfileView("default");
+    setProfileView('default');
   };
-  if (profileView == "change password") {
+  if (profileView == 'change password') {
     return (
       <ChangePassword onChangePassword={cancelChangePassword}>
         <VerticalLine />
@@ -39,7 +37,7 @@ function Profile() {
         <Container>
           <div className="p-4">
             <hr />
-            <Row className={"mt-4"}>
+            <Row className={'mt-4'}>
               <Col md={5}>
                 <AccountInfo onChangePassword={changePassword} />
               </Col>
@@ -52,9 +50,9 @@ function Profile() {
             </Row>
           </div>
         </Container>
-        <div className="p-4 pt-5" style={{ backgroundColor: "#e9ebf6" }}>
+        <div className="p-4 pt-5" style={{ backgroundColor: '#e9ebf6' }}>
           <Container>
-            <h4 className="text-uppercase">{t("Notifications")}</h4>
+            <h4 className="text-uppercase">{t('Notifications')}</h4>
             <hr />
             <Notification
               alert="success"
@@ -77,4 +75,5 @@ function Profile() {
     );
   }
 }
+// eslint-disable-next-line no-undef
 export default hot(module)(Profile);

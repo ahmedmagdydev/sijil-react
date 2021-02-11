@@ -11,6 +11,11 @@ const DashboardStyle = styled.div`
   background-color: #f5f5fd;
   .content {
     padding: ${(props) => (props.dir === 'ltr' ? '0 0 0 220px' : '0 220px 0 0')};
+    overflow-x: hidden;
+    @media (max-width: 910px) {
+      padding: 0;
+      padding-top: 20px;
+    }
   }
   &-header {
     color: #1e4b5e;
@@ -27,9 +32,13 @@ const DashboardStyle = styled.div`
 `;
 function Dashboard({ title, children }) {
   const { t, i18n } = useTranslation();
-  const [cookies, setCookie, removeCookie] = useCookies(['i18next']);
+  const [{ token }, setCookie] = useCookies(['i18next']);
+  console.log(`🚀 ~ file: Dashboard.js ~ line 36 ~ cookie`, token);
 
   useEffect(() => {
+    if (!token) {
+      alert('you are not logged in, you will be redirected to login page');
+    }
     if (!localStorage.getItem('i18nextLng')) {
       localStorage.setItem('i18nextLng', 'ar');
     }
@@ -49,16 +58,16 @@ function Dashboard({ title, children }) {
       }}
       dir={getLang() === 'ar' ? 'rtl' : 'ltr'}
     >
-      <DashboardSidebar />
+      <DashboardSidebar lang={i18n.language} />
       <div dir={getLang() === 'ar' ? 'rtl' : 'ltr'} className="content flex-grow-1">
         <Container>
           <div className="dashboard-header px-4 pt-4 pb-2 d-flex">
             <h2>{t(title)}</h2>
-            <div className={(getLang() === 'ar' ? 'mr-auto' : 'ml-auto') + ' d-flex'}>
-              <Box className="mr-2">
+            <div className={(getLang() === 'ar' ? 'mr-auto' : 'ml-auto') + ' d-md-flex d-none'}>
+              <Box className={getLang() === 'ar' ? 'ml-2' : 'mr-2'}>
                 <i className="fa fa-bell"></i>
               </Box>
-              <Box className="mr-2">
+              <Box className={getLang() === 'ar' ? 'ml-2' : 'mr-2'}>
                 {t('SignOut')} <i className="fa fa-sign-out"></i>
               </Box>
               <Box>

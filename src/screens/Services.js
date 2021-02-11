@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
-import axios from 'axios';
+
 import Service from '../components/framework/Service';
-import { apiBaseUrl } from '../constants/api';
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -10,7 +9,7 @@ function Services() {
     getServicesList();
   }, []);
   const getServicesList = async () => {
-    const { data } = await axios.get(`${apiBaseUrl}/api/serviceslist`);
+    const { data } = await axiosInstance.get(`serviceslist`);
     console.log(`🚀 ~ file: Services.js ~ line 14 ~ data`, data);
     setServices(data);
   };
