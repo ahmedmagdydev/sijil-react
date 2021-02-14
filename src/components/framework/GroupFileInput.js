@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 const GroupInputStyle = styled.div`
@@ -22,7 +22,6 @@ const GroupInputStyle = styled.div`
   }
 `;
 function GroupFileInput({ lang, handleClick, onBlur, name, placeholder, id }) {
-  const [value, setValue] = useState('');
   const { t } = useTranslation();
   return (
     <GroupInputStyle lang={lang}>
@@ -30,16 +29,16 @@ function GroupFileInput({ lang, handleClick, onBlur, name, placeholder, id }) {
         onBlur={onBlur}
         name={name}
         type="file"
+        multiple
         placeholder={placeholder}
         onChange={(e) => {
-          handleClick(e.target.files[0]);
-          setValue(e.target.files[0].name);
+          handleClick(e.target.files);
         }}
         id={id}
         accept="image/png,image/jpeg,application/pdf"
         hidden
       />
-      <input type="text" readOnly={true} value={value} placeholder={placeholder} />
+      <input type="text" readOnly={true} placeholder={placeholder} />
       <label htmlFor={id}>{t('Browse')}</label>
     </GroupInputStyle>
   );

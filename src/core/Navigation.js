@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import { axiosInstance } from '../hooks/axiosRequest';
 const NavigationStyle = styled.ul`
   padding-right: 0;
   a {
@@ -43,72 +44,31 @@ const activeLink = (url) => {
 function Navigation() {
   const { t, i18n } = useTranslation();
   const getLang = () => i18n.language || window.localStorage.i18nLng;
-
+  const [navigationList, setNavigationList] = useState([]);
+  useEffect(() => {
+    axiosInstance
+      .get('navigationlist')
+      .then((navigationList) => {
+        console.log(`🚀 ~ file: Navigation.js ~ line 50 ~ navigationList`, navigationList);
+        setNavigationList(navigationList.data);
+      })
+      .catch((error) => {
+        console.log(`🚀 ~ file: Navigation.js ~ line 53 ~ error`, error);
+      });
+  }, []);
   return (
     <NavigationStyle
       dir={getLang() === 'ar' ? 'rtl' : 'ltr'}
       className="list-unstyled mt-4 navigation"
     >
-      {/* <li>
-        <a href="/home" className={`d-block ${activeLink("home")}`}>
-          <i className={"fa fa-home"}></i>
-          {t("home")}
-        </a>
-      </li> */}
-      <li>
-        <a href="/profile" className={`d-block ${activeLink('profile')}`}>
-          <i className={'fa fa-user'}></i>
-          {t('profile')}
-        </a>
-      </li>
-      <li>
-        <a href="/search" className={`d-block ${activeLink('search')}`}>
-          <i className={'fa fa-search'}></i>
-          {t('search')}
-        </a>
-      </li>
-      <li>
-        <a href="/home" className={`d-block ${activeLink('home')}`}>
-          <i className={'fa fa-th'}></i>
-          {t('dashboard')}
-        </a>
-      </li>
-      <li>
-        <a href="/services" className={`d-block ${activeLink('services')}`}>
-          <i className={'fa fa-suitcase'}></i>
-          {t('services')}
-        </a>
-      </li>
-      <li>
-        <a href="/responses" className={`d-block ${activeLink('responses')}`}>
-          <i className={'fa fa-comment'}></i>
-          {t('responses')}
-        </a>
-      </li>
-      <li>
-        <a href="/invoices" className={`d-block ${activeLink('invoices')}`}>
-          <i className={'fa fa-sticky-note'}></i>
-          {t('invoices')}
-        </a>
-      </li>
-      <li>
-        <a href="/documentation" className={`d-block ${activeLink('documentation')}`}>
-          <i className={'fa fa-file'}></i>
-          {t('documentation')}
-        </a>
-      </li>
-      <li>
-        <a href="/analyticalreports" className={`d-block ${activeLink('analyticalreports')}`}>
-          <i className={'fa fa-pie-chart'}></i>
-          {t('AnalyticalReports')}
-        </a>
-      </li>
-      <li>
-        <a href="/users" className={`d-block ${activeLink('users')}`}>
-          <i className={'fa fa-users'}></i>
-          {t('users')}
-        </a>
-      </li>
+      {navigationList.map((item) => (
+        <li key={item.title}>
+          <a href={item.link} className={`d-block ${activeLink(item.title)}`}>
+            <i className={'fa fa-' + item.icon}></i>
+            {t(item.title)}
+          </a>
+        </li>
+      ))}
     </NavigationStyle>
   );
 }

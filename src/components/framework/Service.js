@@ -24,7 +24,6 @@ const ServiceStyle = styled.a`
   }
 `;
 function Service({ titleEn, link, titleAr, textColor, iconUrl }) {
-  console.log(`🚀 ~ file: Service.js ~ line 27 ~ iconUrl`, iconUrl);
   const { i18n } = useTranslation();
   return (
     <ServiceStyle href={link} textColor={textColor}>

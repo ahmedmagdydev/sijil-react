@@ -54,7 +54,7 @@ const DropZone = styled.div`
     }
   }
 `;
-function ContractAmendment() {
+function PaymentUpdate() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: 'image/jpeg, image/png, application/pdf',
   });
@@ -153,4 +153,4 @@ function ContractAmendment() {
 }
 
 // eslint-disable-next-line no-undef
-export default hot(module)(ContractAmendment);
+export default hot(module)(PaymentUpdate);

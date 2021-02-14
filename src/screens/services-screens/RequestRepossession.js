@@ -80,7 +80,7 @@ function RequestRepossession() {
     setSupportingDocuments(documentsAfterRemoval);
   };
   const supportingDocumentAdd = (e) => {
-    setSupportingDocuments([...supportingDocuments, e]);
+    setSupportingDocuments([...supportingDocuments, ...e]);
   };
   const { t, i18n } = useTranslation();
 

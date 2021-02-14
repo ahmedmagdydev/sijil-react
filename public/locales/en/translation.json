@@ -13,6 +13,7 @@
   "SignOut": "Sign Out",
   "Notifications": "Notifications",
   "AnalyticalReports": "Analytical Reports",
+  "analyticalreports": "Analytical Reports",
   "dashboard": "Dashboard",
   "services": "Services",
   "responses": "Responses",
@@ -102,6 +103,9 @@
     "ContractName": "Contract Name"
   },
   "Services": {
+    "contractRegistration": "Contract Registration",
+    "paymentUpdate": "Payment Update",
+    "contractClosure": "Contract Closure",
     "transferOfRights": "Transfer of Rights",
     "generalEnquiry": "General Enquiry",
     "contractDetails": "Contract Details",

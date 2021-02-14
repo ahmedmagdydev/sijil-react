@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import SearchFilter from './SearchFilter';
 import Pagination from '../framework/Pagination';
+import { siteBaseUrl } from '../../constants/api';
 
 const TableStyle = styled.div`
   text-align: center;
@@ -157,10 +158,12 @@ function SearchResults() {
         </div>
         <BTable responsive {...getTableProps()}>
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+            {headerGroups.map((headerGroup, rowIndex) => (
+              <tr key={rowIndex + 'row'} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, thIndex) => (
+                  <th key={rowIndex + thIndex + 'th'} {...column.getHeaderProps()}>
+                    {column.render('Header')}
+                  </th>
                 ))}
                 <th>Download</th>
               </tr>
@@ -170,10 +173,10 @@ function SearchResults() {
             {page.map((row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
+                <tr key={i + 'bodyRow'} {...row.getRowProps()}>
+                  {row.cells.map((cell, index) => {
                     return (
-                      <td {...cell.getCellProps()}>
+                      <td key={index + i + 'bodyCell'} {...cell.getCellProps()}>
                         <div>{cell.render('Cell')}</div>
                       </td>
                     );
@@ -181,10 +184,16 @@ function SearchResults() {
                   <td>
                     <div>
                       <a href={row.original.download.excel}>
-                        <img src="icons/excel.jpg" style={{ width: '17px', margin: ' 0 5px' }} />
+                        <img
+                          src={siteBaseUrl + 'icons/excel.jpg'}
+                          style={{ width: '17px', margin: ' 0 5px' }}
+                        />
                       </a>
                       <a href={row.original.download.pdf}>
-                        <img src="icons/pdf.jpg" style={{ width: '17px', margin: ' 0 5px' }} />
+                        <img
+                          src={siteBaseUrl + 'icons/pdf.jpg'}
+                          style={{ width: '17px', margin: ' 0 5px' }}
+                        />
                       </a>
                     </div>
                   </td>

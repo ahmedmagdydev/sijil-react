@@ -17,7 +17,6 @@ function CancelEnforcement() {
   const [singleSearchLoading, setSingleSearchLoading] = useState(false);
   const [singleSearch, setSingleSearch] = useState('');
   const [singleSearchData, setSingleSearchData] = useState([]);
-  console.log(`🚀 ~ file: CancelEnforcement.js ~ line 20 ~ singleSearchData`, singleSearchData);
   const [singleSearchColumns, setSingleSearchColumns] = useState([]);
   const [bulkRequestLoading, setBulkRequestLoading] = useState(false);
   const [bulkRequest, setBulkRequest] = useState('');

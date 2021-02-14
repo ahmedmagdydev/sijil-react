@@ -63,7 +63,6 @@ function Factoring() {
           setTimeout(() => {
             setSubmitting(false);
           }, 1000);
-          console.log(`🚀 ~ file: Factoring.js ~ line 74 ~ data`, data);
         }}
       >
         {({
@@ -243,7 +242,7 @@ function Factoring() {
                         if (e)
                           setFieldValue('samaNoObjectionLetter', [
                             ...values.samaNoObjectionLetter,
-                            e,
+                            ...e,
                           ]);
                       }}
                     />
@@ -288,7 +287,7 @@ function Factoring() {
                         if (e)
                           setFieldValue('otherAttachmetOptional', [
                             ...values.otherAttachmetOptional,
-                            e,
+                            ...e,
                           ]);
                       }}
                     />

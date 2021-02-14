@@ -13,6 +13,7 @@ import Box from '../../components/framework/Box';
 import { usePrepareTable } from '../../hooks/prepareTable';
 import styled from 'styled-components';
 import { axiosInstance } from '../../hooks/axiosRequest';
+import { siteBaseUrl } from '../../constants/api';
 const Attachments = styled.ul`
   li {
     &:nth-child(odd) {
@@ -170,7 +171,7 @@ function RequestToR() {
                       {attachments.map((file, index) => (
                         <li className="d-flex file align-items-center px-2 py-3" key={index}>
                           <div>
-                            <img src="icons/pdf.jpg" alt="" />
+                            <img src={siteBaseUrl + 'icons/pdf.jpg'} alt="" />
                           </div>
                           <p className="mx-3 my-0">{file.name}</p>
                           <a href={file.url} target="_blank" rel="noreferrer">

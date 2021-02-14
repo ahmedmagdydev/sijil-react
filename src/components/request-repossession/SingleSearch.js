@@ -76,7 +76,7 @@ function SingleSearch({
                   onDocumentAdd={(e) => {
                     setRepossessionDetails({
                       ...repossessionDetails,
-                      supportingDocuments: [...repossessionDetails.supportingDocuments, e],
+                      supportingDocuments: [...repossessionDetails.supportingDocuments, ...e],
                     });
                   }}
                 />

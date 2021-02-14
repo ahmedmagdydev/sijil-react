@@ -5,6 +5,7 @@ import { useTable, usePagination, useSortBy } from 'react-table';
 import Container from 'react-bootstrap/Container';
 import Pagination from './Pagination';
 import { useTranslation } from 'react-i18next';
+import { siteBaseUrl } from '../../constants/api';
 const TableStyle = styled.div`
   width: 100%;
   table {
@@ -114,7 +115,7 @@ function TableWithPaging({ data, columns, children, noSorting, onRowClick }) {
                             {cell.value.map((item, index) => (
                               <a href={item.url} key={item.url + index}>
                                 <img
-                                  src={'icons/' + item.type + '.jpg'}
+                                  src={siteBaseUrl + 'icons/' + item.type + '.jpg'}
                                   style={{ width: '17px', margin: ' 0 5px' }}
                                 />
                               </a>

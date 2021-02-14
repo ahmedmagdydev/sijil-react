@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 import Button from 'react-bootstrap/Button';
+import { siteBaseUrl } from '../constants/api';
 
 const SideBar = styled.div`
   background-color: #083258;
@@ -37,7 +38,6 @@ const SideBar = styled.div`
 `;
 function DashboardSidebar({ lang }) {
   const [showMenu, setShowMenu] = useState(false);
-  console.log(`🚀 ~ file: DashboardSidebar.js ~ line 34 ~ showMenu`, showMenu);
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -46,7 +46,7 @@ function DashboardSidebar({ lang }) {
       <Button className="menu" variant="link" onClick={toggleMenu}>
         <i className={'fa fa-' + (showMenu ? 'close' : 'bars')}></i>
       </Button>
-      <img src="logo.png" className="logo" alt="" />
+      <img src={siteBaseUrl + 'logo.png'} className="logo" alt="" />
       <Navigation />
     </SideBar>
   );

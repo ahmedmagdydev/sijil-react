@@ -33,11 +33,10 @@ const DashboardStyle = styled.div`
 function Dashboard({ title, children }) {
   const { t, i18n } = useTranslation();
   const [{ token }, setCookie] = useCookies(['i18next']);
-  console.log(`🚀 ~ file: Dashboard.js ~ line 36 ~ cookie`, token);
 
   useEffect(() => {
     if (!token) {
-      alert('you are not logged in, you will be redirected to login page');
+      // alert('you are not logged in, you will be redirected to login page');
     }
     if (!localStorage.getItem('i18nextLng')) {
       localStorage.setItem('i18nextLng', 'ar');

@@ -4,10 +4,17 @@ import ReactDOM from 'react-dom';
 import './i18n';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'react-datepicker/dist/react-datepicker.css';
 import Loader from './components/framework/Loader';
+
 const Home = React.lazy(() => import('./screens/Home'));
 const TransferOfRights = React.lazy(() => import('./screens/services-screens/TransferOfRights'));
+
+const PaymentUpdate = React.lazy(() => import('./screens/services-screens/PaymentUpdate'));
+const ContractClosure = React.lazy(() => import('./screens/services-screens/ContractClosure'));
+const ContractRegistration = React.lazy(() =>
+  import('./screens/services-screens/ContractRegistration'),
+);
+
 const GeneralEnquiry = React.lazy(() => import('./screens/services-screens/GeneralEnquiry'));
 const ContractDetails = React.lazy(() => import('./screens/services-screens/ContractDetails'));
 const RequestRepossession = React.lazy(() =>
@@ -213,6 +220,33 @@ document.getElementById('root')
         </Dashboard>
       </Suspense>,
       document.getElementById('requestEnforcement'),
+    )
+  : document.getElementById('paymentUpdate')
+  ? ReactDOM.render(
+      <Suspense fallback={<Loader />}>
+        <Dashboard title="Services.paymentUpdate">
+          <PaymentUpdate />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById('paymentUpdate'),
+    )
+  : document.getElementById('contractClosure')
+  ? ReactDOM.render(
+      <Suspense fallback={<Loader />}>
+        <Dashboard title="Services.contractClosure">
+          <ContractClosure />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById('contractClosure'),
+    )
+  : document.getElementById('contractRegistration')
+  ? ReactDOM.render(
+      <Suspense fallback={<Loader />}>
+        <Dashboard title="Services.contractRegistration">
+          <ContractRegistration />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById('contractRegistration'),
     )
   : null;
 AnalyticalReports;

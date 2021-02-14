@@ -46,7 +46,7 @@ function EnforcementSingleRequest({
                   onDocumentAdd={(e) => {
                     setEnforcementDetails({
                       ...enforcementDetails,
-                      supportingDocuments: [...enforcementDetails.supportingDocuments, e],
+                      supportingDocuments: [...enforcementDetails.supportingDocuments, ...e],
                     });
                   }}
                 />

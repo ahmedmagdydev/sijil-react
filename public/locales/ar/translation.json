@@ -13,6 +13,7 @@
   "search": "بحث",
   "Notifications": "إشعارات",
   "AnalyticalReports": "التقارير التحليلية",
+  "analyticalreports": "التقارير التحليلية",
   "dashboard": "لوحة القيادة",
   "services": "خدمات",
   "responses": "استجابات",
@@ -103,6 +104,9 @@
     "ContractName": "إسم العقد"
   },
   "Services": {
+    "contractRegistration": "تسجيل العقد",
+    "paymentUpdate": "تحديث الدفع",
+    "contractClosure": "إقفال العقد",
     "transferOfRights": "نقل الحقوق",
     "generalEnquiry": "استفسار عام",
     "contractDetails": "تفاصيل العقد",

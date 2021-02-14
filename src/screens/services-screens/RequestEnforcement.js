@@ -27,7 +27,6 @@ function RequestEnforcement() {
   const [bulkRequestLoading, setBulkRequestLoading] = useState(false);
   const [activeSearch, setActiveSearch] = useState('');
   const [enforcementDetails, setEnforcementDetails] = useState();
-  const [requestDetails, setRequestDetails] = useState('');
   const [supportingDocuments, setSupportingDocuments] = useState([]);
   const submitSingleRequest = async (e) => {
     e.preventDefault();
@@ -54,7 +53,6 @@ function RequestEnforcement() {
     setActiveSearch('bulk');
   };
   const handleSearchResultClick = async (e) => {
-    console.log(`🚀 ~ file: RequestEnforcement.js ~ line 69 ~ e`, e);
     setEnforcementDetails({
       '#': e.values['#'],
       type: e.values.type,
@@ -62,18 +60,13 @@ function RequestEnforcement() {
       reason: 'allReasons',
       supportingDocuments: [],
     });
-    setRequestDetails({
-      type: e.values.type,
-      plateNumber: e.values.plateNumber,
-      ARN: e.values.assetRegistrationNumber,
-    });
   };
   const removeDocument = (name) => {
-    const documentsAfterRemoval = requestDetails.supportingDocuments.filter((item) => {
+    const documentsAfterRemoval = enforcementDetails.supportingDocuments.filter((item) => {
       return item.name != name ? item : null;
     });
     setEnforcementDetails({
-      ...requestDetails,
+      ...enforcementDetails,
       supportingDocuments: documentsAfterRemoval,
     });
   };
@@ -84,7 +77,7 @@ function RequestEnforcement() {
     setSupportingDocuments(documentsAfterRemoval);
   };
   const supportingDocumentAdd = (e) => {
-    setSupportingDocuments([...supportingDocuments, e]);
+    setSupportingDocuments([...supportingDocuments, ...e]);
   };
   const { t, i18n } = useTranslation();
 

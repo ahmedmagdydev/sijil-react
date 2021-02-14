@@ -111,28 +111,28 @@ function ContractDetails() {
       <Container>
         <div className="p-4">
           <div className="mb-3">
-            <Button style={{ width: '200px' }} variant="primary">
+            <a className="btn btn-primary" style={{ width: '200px' }} href="requestRepossession">
               {t('Services.requestRepossession')}
-            </Button>
-            <Button style={{ width: '200px' }} variant="light" className="mx-4">
+            </a>
+            <a style={{ width: '200px' }} href="cancelRepossession" className="mx-4 btn btn-light">
               {t('Services.cancelRepossession')}
-            </Button>
+            </a>
           </div>
           <div className="mb-3">
-            <Button style={{ width: '200px' }} variant="primary">
+            <a href="requestEnforcement" style={{ width: '200px' }} className="btn btn-primary">
               {t('Services.requestEnforcement')}
-            </Button>
-            <Button style={{ width: '200px' }} variant="light" className="mx-4">
+            </a>
+            <a href="cancelEnforcement" style={{ width: '200px' }} className="mx-4 btn btn-light">
               {t('Services.cancelEnforcement')}
-            </Button>
+            </a>
           </div>
           <div className="mb-3">
-            <Button style={{ width: '200px' }} variant="primary">
+            <a href="requestToR" style={{ width: '200px' }} className="btn btn-primary">
               {t('Services.requestToR')}
-            </Button>
-            <Button style={{ width: '200px' }} variant="light" className="mx-4">
+            </a>
+            <a href="cancelToR" style={{ width: '200px' }} className="mx-4 btn btn-light">
               {t('Services.cancelToR')}
-            </Button>
+            </a>
           </div>
         </div>
       </Container>
