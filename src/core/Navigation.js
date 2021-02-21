@@ -49,11 +49,10 @@ function Navigation() {
     axiosInstance
       .get('navigationlist')
       .then((navigationList) => {
-        console.log(`🚀 ~ file: Navigation.js ~ line 50 ~ navigationList`, navigationList);
         setNavigationList(navigationList.data);
       })
       .catch((error) => {
-        console.log(`🚀 ~ file: Navigation.js ~ line 53 ~ error`, error);
+        console.log('error: ', error);
       });
   }, []);
   return (

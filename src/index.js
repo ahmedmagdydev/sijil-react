@@ -8,6 +8,8 @@ import Loader from './components/framework/Loader';
 
 const Home = React.lazy(() => import('./screens/Home'));
 const TransferOfRights = React.lazy(() => import('./screens/services-screens/TransferOfRights'));
+const Factoring = React.lazy(() => import('./components/transfer-of-rights/Factoring'));
+const SalesOfAssets = React.lazy(() => import('./components/transfer-of-rights/SalesOfAssets'));
 
 const PaymentUpdate = React.lazy(() => import('./screens/services-screens/PaymentUpdate'));
 const ContractClosure = React.lazy(() => import('./screens/services-screens/ContractClosure'));
@@ -247,6 +249,24 @@ document.getElementById('root')
         </Dashboard>
       </Suspense>,
       document.getElementById('contractRegistration'),
+    )
+  : document.getElementById('factoring')
+  ? ReactDOM.render(
+      <Suspense fallback={<Loader />}>
+        <Dashboard title="Factoring">
+          <Factoring />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById('factoring'),
+    )
+  : document.getElementById('saleOfAssets')
+  ? ReactDOM.render(
+      <Suspense fallback={<Loader />}>
+        <Dashboard title="Sale Of Assets">
+          <SalesOfAssets />
+        </Dashboard>
+      </Suspense>,
+      document.getElementById('saleOfAssets'),
     )
   : null;
 AnalyticalReports;

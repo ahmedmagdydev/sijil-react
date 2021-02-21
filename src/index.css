@@ -66,3 +66,17 @@ html body {
 [dir='rtl'] .dropdown-toggle:after {
   margin-right: 0.255em;
 }
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .ms-h1,
+body .ms-h2,
+body .ms-h3,
+body .ms-h4,
+body .ms-h5,
+body .ms-h6 {
+  margin: 0;
+}

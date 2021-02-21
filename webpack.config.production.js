@@ -28,7 +28,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    publicPath: '/_layouts/15/STS.Sijil.Portal/dist/',
+    // publicPath: '/_layouts/15/STS.Sijil.Portal/dist/',
+    publicPath: '/',
     filename: 'bundle.js',
     chunkFilename: '[name].bundle.js',
   },
@@ -38,8 +39,5 @@ module.exports = {
     publicPath: 'http://localhost:3000/dist/',
     hotOnly: true,
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new CopyPlugin([{ from: 'public', to: './' }]),
-  ],
+  plugins: [new CopyPlugin([{ from: 'public', to: './' }])],
 };
