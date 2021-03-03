@@ -66,7 +66,6 @@ html body {
 [dir='rtl'] .dropdown-toggle:after {
   margin-right: 0.255em;
 }
-<<<<<<< Updated upstream
 body h1,
 body h2,
 body h3,
@@ -81,8 +80,3 @@ body .ms-h5,
 body .ms-h6 {
   margin: 0;
 }
-=======
-h1, h2, h3, h4, h5, h6 {
-  margin: 0px !important;
-}
->>>>>>> Stashed changes
