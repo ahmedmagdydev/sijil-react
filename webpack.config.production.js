@@ -28,8 +28,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    // publicPath: '/_layouts/15/STS.Sijil.Portal/dist/',
-    publicPath: '/',
+    publicPath: '/_layouts/15/STS.Sijil.Portal/dist/',
+   // publicPath: '/',
     filename: 'bundle.js',
     chunkFilename: '[name].bundle.js',
   },
