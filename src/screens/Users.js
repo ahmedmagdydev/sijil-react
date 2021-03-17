@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import styled from 'styled-components';
 import { usePrepareTable } from '../hooks/prepareTable';
@@ -7,6 +7,8 @@ import { useTable, usePagination } from 'react-table';
 import BTable from 'react-bootstrap/Table';
 import Pagination from '../components/framework/Pagination';
 import { useTranslation } from 'react-i18next';
+import ModalSide from '../components/framework/ModalSide';
+
 const TableStyle = styled.div`
   .privileges {
     color: #46d73f;
@@ -62,6 +64,8 @@ const TableStyle = styled.div`
 function Users() {
   const { columns, data } = usePrepareTable('users');
   const { t, i18n } = useTranslation();
+  const [listOfPrivilages, setListOfPrivilages] = useState([]);
+  const [showPrivilages, setShowPrivilages] = useState(false);
   const {
     getTableProps,
     getTableBodyProps,
@@ -116,10 +120,23 @@ function Users() {
                       return (
                         <td key={index} {...cell.getCellProps()}>
                           {cell.column.Header == 'privileges' ? (
-                            <div className="d-flex privileges">
-                              {cell.value.map((item, index) => (
-                                <div key={index}>{item}</div>
-                              ))}
+                            <div className="d-flex align-items-center ">
+                              <div className="d-flex privileges">
+                                {cell.value.slice(0, 2).map((item, index) => (
+                                  <div key={index}>{item}</div>
+                                ))}
+                              </div>
+                              {cell.value.length > 2 ? (
+                                <button
+                                  className="mx-3 btn btn-link text-success"
+                                  onClick={() => {
+                                    setListOfPrivilages(cell.value);
+                                    setShowPrivilages(true);
+                                  }}
+                                >
+                                  see more
+                                </button>
+                              ) : null}
                             </div>
                           ) : (
                             <div>{cell.render('Cell')}</div>
@@ -143,6 +160,31 @@ function Users() {
           />
         ) : null}
       </Container>
+      <ModalSide
+        title={t('privileges')}
+        onModalHide={() => {
+          setShowPrivilages(false);
+        }}
+        show={showPrivilages}
+      >
+        <div style={{ color: '#46d73f' }}>
+          {listOfPrivilages &&
+            listOfPrivilages.map((item, index) => (
+              <div
+                style={{
+                  border: '1px solid #46d73f',
+                  background: '#edfbec',
+                  margin: '15px 5px ',
+                  borderRadius: '9px',
+                  padding: '5px',
+                }}
+                key={index}
+              >
+                {item}
+              </div>
+            ))}
+        </div>
+      </ModalSide>
     </TableStyle>
   );
 }
