@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 const PaginationStyle = styled.div`
   display: flex;
   justify-content: center;
@@ -28,26 +28,36 @@ const PaginationStyle = styled.div`
 `;
 function Pagination({ ...props }) {
   const { t } = useTranslation();
+  const getPagingRange = (current, { min = 1, total = props.pageCount, length = 5 } = {}) => {
+    if (length > total) length = total;
+
+    let start = current - Math.floor(length / 2);
+    start = Math.max(start, min);
+    start = Math.min(start, min + total - length);
+
+    return Array.from({ length: length }, (el, i) => start + i);
+  };
+  console.log(getPagingRange(props.pageIndex));
   return (
     <PaginationStyle>
-      <div onClick={() => props.gotoPage(0)}>{t("First")}</div>
+      <div onClick={() => props.gotoPage(0)}>{t('First')}</div>
       <div onClick={props.previousPage}>‹</div>
-      {Array.from({ length: props.pageCount }).map((item, index) => {
+      {getPagingRange(props.pageIndex + 1).map((item) => {
         return (
           <div
-            key={index}
-            className={index == props.pageIndex ? "active page" : " page"}
+            key={item}
+            className={item == props.pageIndex + 1 ? 'active page' : ' page'}
             onClick={() => {
-              props.gotoPage(index);
+              props.gotoPage(item - 1);
             }}
           >
-            {index + 1}
+            {item}
           </div>
         );
       })}
 
       <div onClick={props.nextPage}>›</div>
-      <div onClick={() => props.gotoPage(props.pageCount - 1)}>{t("Last")}</div>
+      <div onClick={() => props.gotoPage(props.pageCount - 1)}>{t('Last')}</div>
     </PaginationStyle>
   );
 }

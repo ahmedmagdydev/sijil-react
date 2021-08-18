@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader';
 import styled from 'styled-components';
-import { usePrepareTable } from '../hooks/prepareTable';
 import Container from 'react-bootstrap/Container';
 import { useTable, usePagination } from 'react-table';
 import BTable from 'react-bootstrap/Table';
 import Pagination from '../components/framework/Pagination';
 import { useTranslation } from 'react-i18next';
 import ModalSide from '../components/framework/ModalSide';
+import { axiosInstance } from '../hooks/axiosRequest';
+import Loader from '../components/framework/Loader';
 
 const TableStyle = styled.div`
   .privileges {
@@ -62,8 +63,24 @@ const TableStyle = styled.div`
   }
 `;
 function Users() {
-  const { columns, data } = usePrepareTable('users');
+  const [loading, setLoading] = useState(true);
   const { t, i18n } = useTranslation();
+  const [columns, setColumns] = useState([]);
+  const [data, setData] = useState([]);
+  const [noOfPages, setNoOfPages] = useState(0);
+  const getServiceStatuses = async () => {
+    const { data } = await axiosInstance.get(
+      `users?lang=${i18n.language}${'&page=' + pageIndex + '&perPage=' + 2}`,
+    );
+    let columns = data.map((column) => {
+      return Object.keys(column).map((key) => {
+        return { Header: key, accessor: key };
+      });
+    });
+
+    return { columns: columns[0], data };
+  };
+
   const [listOfPrivilages, setListOfPrivilages] = useState([]);
   const [showPrivilages, setShowPrivilages] = useState(false);
   const {
@@ -81,15 +98,26 @@ function Users() {
     {
       columns,
       data,
-      initialState: {
-        pageIndex: 0,
-        pageSize: 7,
-      },
+      initialState: { pageIndex: 0 },
+      manualPagination: true,
+      pageCount: noOfPages,
     },
     usePagination,
   );
-
-  return (
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      getServiceStatuses().then((res) => {
+        setColumns(res.columns);
+        setData(res.data);
+        setNoOfPages(6);
+        setLoading(false);
+      });
+    }, 1000);
+  }, [i18n.language, pageIndex]);
+  return loading ? (
+    <Loader />
+  ) : (
     <TableStyle lang={i18n.language}>
       <Container>
         <div className="px-4">

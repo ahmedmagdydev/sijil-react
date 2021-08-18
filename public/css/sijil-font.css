@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'sijil-regular';
+  src: url('../fonts/TeshrinAR+LT-Regular.woff') format('woff'),
+    url('../fonts/TeshrinAR+LT-Regular.eot') format('eot'),
+    url('../fonts/TeshrinAR+LT-Regular.svg') format('svg');
+}
+
+@font-face {
+  font-family: 'sijil-bold';
+  src: url('../fonts/TeshrinAR+LT-Bold.otf') format('woff'),
+    url('../fonts/TeshrinAR+LT-Bold.eot') format('eot'),
+    url('../fonts/TeshrinAR+LT-Bold.svg') format('svg');
+}
+@font-face {
+  font-family: 'sijil-light';
+  src: url('../fonts/TeshrinAR+LT-Light.otf') format('woff'),
+    url('../fonts/TeshrinAR+LT-Light.eot') format('eot'),
+    url('../fonts/TeshrinAR+LT-Light.svg') format('svg');
+}
